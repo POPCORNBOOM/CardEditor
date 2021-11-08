@@ -1,4 +1,4 @@
-#CardEditor
+# CardEditor
 > :cake: 一款专为桌游设计师开发的批处理数值填入卡牌生成器
 
 #### 注
