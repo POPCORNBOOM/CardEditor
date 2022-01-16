@@ -149,8 +149,6 @@ namespace CardEditor
                 Properties.Settings.Default.inputtxtdir = filePath;
                 Properties.Settings.Default.Save();
                 tb_textdir.Text = filePath;
-
-
             }
         }
 
@@ -165,7 +163,20 @@ namespace CardEditor
         public void drawprocess()
         {
             int lineid = 0;
-            foreach (string str in System.IO.File.ReadAllLines(Properties.Settings.Default.inputtxtdir, Encoding.UTF8))
+
+            string[] lines;
+            try
+            {
+                lines = System.IO.File.ReadAllLines(Properties.Settings.Default.inputtxtdir, Encoding.UTF8);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("写入文件失败");
+                btn_startdraw.Enabled = true;
+                return;
+            }
+
+            foreach (string str in lines)
             {
                 lineid++;
                 Bitmap tempimg = new Bitmap(sourceimage);
@@ -187,6 +198,8 @@ namespace CardEditor
                     break;
                 }
             }
+
+            btn_startdraw.Enabled = true;
 
         }
 
@@ -219,9 +232,11 @@ namespace CardEditor
             }
             else
             {
-                int x1 = int.Parse(tb_rectx1.Text);
-                int y1 = int.Parse(tb_recty1.Text);
-                if (x1 != null && x >= x1 && y1 != null && y >= y1)
+
+                int? x1 = int.Parse(tb_rectx1.Text);
+                int? y1 = int.Parse(tb_recty1.Text);
+
+                if (x1 != null && y1 != null && x >= x1 && y >= y1)
                 {
                     tb_width.Text = (x - x1).ToString();
                     tb_height.Text = (y - y1).ToString();
@@ -354,7 +369,21 @@ namespace CardEditor
                 dgv_boxesdata.Refresh();
                 int readingline = 0;
                 string filePath = dialog.FileName;
-                foreach (string str in System.IO.File.ReadAllLines(filePath))
+
+                string[] lines;
+                try
+                {
+                    lines = System.IO.File.ReadAllLines(filePath);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("读取文件失败");
+                    dgv_boxesdata.Refresh();
+                    RefreshView();
+                    return;
+                }
+
+                foreach (string str in lines)
                 {
                     readingline++;
                     List<string> textboxrow = new List<string>(str.Split(','));
