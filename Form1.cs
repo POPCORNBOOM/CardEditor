@@ -205,6 +205,10 @@ namespace CardEditor
 
         }
 
+        //使用变量而不是输入框的内容，防止用户自己修改输入框导致程序崩溃
+        int currentX, currentY;
+
+
         private void pBmainview_MouseDown(object sender, MouseEventArgs e)
         {
             double wd = pBmainview.Width;
@@ -213,34 +217,35 @@ namespace CardEditor
             int y = (int)(sourceimage.Height * (e.Y / ht));
             if (isfirst)
             {
+                currentX = x;
+                currentY = y;
+
                 tb_rectx1.Text = x.ToString();
                 tb_recty1.Text = y.ToString();
                 isfirst = false;
             }
             else
             {
-                int x1 = int.Parse(tb_rectx1.Text);
-                int y1 = int.Parse(tb_recty1.Text);
-                if (x1 != null && x >= x1 && y1 != null && y >= y1)
-                {
-                    tb_width.Text = (x - x1).ToString();
-                    tb_height.Text = (y - y1).ToString();
-                    isfirst = true;
-                }
+                //对原来的x和现在的x重排序，小的就是新的x，大的用于计算width，这样可以实现点击任意位置都能定位
+                isfirst = true;
 
-
+                tb_rectx1.Text = currentX > x ? x.ToString() : currentX.ToString();
+                tb_recty1.Text = currentY > y ? y.ToString() : currentY.ToString();
+                tb_width.Text = Math.Abs(currentX - x).ToString();
+                tb_height.Text = Math.Abs(currentY - y).ToString();
             }
         }
 
         private void dgv_boxesdata_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (dgv_boxesdata.CurrentCell == null) return;
             dgv_boxesdata.Rows.Remove(dgv_boxesdata.CurrentRow);
             RefreshView();
-
         }
 
         private void dgv_boxesdata_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (dgv_boxesdata.CurrentCell == null) return;
             if(dgv_boxesdata.CurrentCell.ColumnIndex == 7)
             {
                 ColorDialog colorDia = new ColorDialog();
@@ -293,15 +298,17 @@ namespace CardEditor
 
         private void Form1_SizeChanged(object sender, EventArgs e)
         {
-            /*Bitmap tempimg = new Bitmap(sourceimage);
+            /*
+            Bitmap tempimg = new Bitmap(sourceimage);
             Brush fontbrush = new SolidBrush(Color.Red);
             Graphics g = Graphics.FromImage(drawimage);
                 g.FillRectangle(backbrush, rectangle);
             g.DrawString(text, font, fontbrush, rectangle, sf);
             g.Dispose();
             */
-
-            l_size.Text = "预览比例(" + (pBmainview.Height * 1.0 / pBmainview.Width).ToString("N2") + ")可能与原图(" + (sourceimage.Height * 1.0 / sourceimage.Width).ToString("N2") + ")不一致\n但不影响输出情况(如何调整比例？拉伸窗口！)";
+            
+            if(sourceimage != null)
+                l_size.Text = "预览比例(" + (pBmainview.Height * 1.0 / pBmainview.Width).ToString("N2") + ")可能与原图(" + (sourceimage.Height * 1.0 / sourceimage.Width).ToString("N2") + ")不一致\n但不影响输出情况(如何调整比例？拉伸窗口！)";
             
         }
 
@@ -341,6 +348,7 @@ namespace CardEditor
                 MessageBox.Show("保存成功");
             }
         }
+
 
         private void btn_loadcfg_Click(object sender, EventArgs e)
         {
