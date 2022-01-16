@@ -18,3 +18,16 @@ L:\VS项目\CardEidtor\CardEditor\obj\Debug\CardEditor.csproj.GenerateResource.c
 L:\VS项目\CardEidtor\CardEditor\obj\Debug\CardEditor.csproj.CoreCompileInputs.cache
 L:\VS项目\CardEidtor\CardEditor\obj\Debug\CardEditor.exe
 L:\VS项目\CardEidtor\CardEditor\obj\Debug\CardEditor.pdb
+E:\Hamster\Ham\Programs\C#\CardMaster\bin\Debug\CardEditor.exe.config
+E:\Hamster\Ham\Programs\C#\CardMaster\bin\Debug\CardEditor.exe
+E:\Hamster\Ham\Programs\C#\CardMaster\bin\Debug\CardEditor.pdb
+E:\Hamster\Ham\Programs\C#\CardMaster\bin\Debug\System.dll
+E:\Hamster\Ham\Programs\C#\CardMaster\bin\Debug\zh-CHS\System.resources.dll
+E:\Hamster\Ham\Programs\C#\CardMaster\obj\Debug\CardEditor.csprojAssemblyReference.cache
+E:\Hamster\Ham\Programs\C#\CardMaster\obj\Debug\CardEditor.Form1.resources
+E:\Hamster\Ham\Programs\C#\CardMaster\obj\Debug\CardEditor.Properties.Resources.resources
+E:\Hamster\Ham\Programs\C#\CardMaster\obj\Debug\CardEditor.csproj.GenerateResource.cache
+E:\Hamster\Ham\Programs\C#\CardMaster\obj\Debug\CardEditor.csproj.CoreCompileInputs.cache
+E:\Hamster\Ham\Programs\C#\CardMaster\obj\Debug\CardEditor.csproj.CopyComplete
+E:\Hamster\Ham\Programs\C#\CardMaster\obj\Debug\CardEditor.exe
+E:\Hamster\Ham\Programs\C#\CardMaster\obj\Debug\CardEditor.pdb

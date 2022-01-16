@@ -61,6 +61,8 @@ namespace CardEditor
             this.btn_choosefile = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.l_xyplus = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.l_pos = new System.Windows.Forms.Label();
             this.l_size = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -69,29 +71,27 @@ namespace CardEditor
             this.label9 = new System.Windows.Forms.Label();
             this.tb_shouldlike = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btn_loadcfg = new System.Windows.Forms.Button();
             this.btn_savecfg = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.colorshow = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.cb_flag = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.l_xyplus = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pBmainview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_boxesdata)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // pBmainview
@@ -101,9 +101,10 @@ namespace CardEditor
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pBmainview.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pBmainview.Image = global::CardEditor.Properties.Resources._1;
-            this.pBmainview.Location = new System.Drawing.Point(0, 47);
+            this.pBmainview.Location = new System.Drawing.Point(0, 59);
+            this.pBmainview.Margin = new System.Windows.Forms.Padding(4);
             this.pBmainview.Name = "pBmainview";
-            this.pBmainview.Size = new System.Drawing.Size(310, 314);
+            this.pBmainview.Size = new System.Drawing.Size(413, 392);
             this.pBmainview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pBmainview.TabIndex = 0;
             this.pBmainview.TabStop = false;
@@ -131,12 +132,13 @@ namespace CardEditor
             this.fontsize,
             this.color,
             this.flag});
-            this.dgv_boxesdata.Location = new System.Drawing.Point(0, 170);
+            this.dgv_boxesdata.Location = new System.Drawing.Point(0, 212);
+            this.dgv_boxesdata.Margin = new System.Windows.Forms.Padding(4);
             this.dgv_boxesdata.Name = "dgv_boxesdata";
             this.dgv_boxesdata.RowHeadersWidth = 62;
             this.dgv_boxesdata.RowTemplate.Height = 23;
             this.dgv_boxesdata.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgv_boxesdata.Size = new System.Drawing.Size(642, 232);
+            this.dgv_boxesdata.Size = new System.Drawing.Size(856, 290);
             this.dgv_boxesdata.TabIndex = 1;
             this.dgv_boxesdata.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_boxesdata_CellClick);
             this.dgv_boxesdata.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_boxesdata_CellDoubleClick);
@@ -217,8 +219,9 @@ namespace CardEditor
             // 
             this.btn_loadbase.Dock = System.Windows.Forms.DockStyle.Top;
             this.btn_loadbase.Location = new System.Drawing.Point(0, 0);
+            this.btn_loadbase.Margin = new System.Windows.Forms.Padding(4);
             this.btn_loadbase.Name = "btn_loadbase";
-            this.btn_loadbase.Size = new System.Drawing.Size(310, 32);
+            this.btn_loadbase.Size = new System.Drawing.Size(413, 40);
             this.btn_loadbase.TabIndex = 2;
             this.btn_loadbase.Text = "载入模板图片";
             this.btn_loadbase.UseVisualStyleBackColor = true;
@@ -226,72 +229,81 @@ namespace CardEditor
             // 
             // tb_boxname
             // 
-            this.tb_boxname.Location = new System.Drawing.Point(15, 40);
+            this.tb_boxname.Location = new System.Drawing.Point(20, 50);
+            this.tb_boxname.Margin = new System.Windows.Forms.Padding(4);
             this.tb_boxname.Name = "tb_boxname";
-            this.tb_boxname.Size = new System.Drawing.Size(80, 21);
+            this.tb_boxname.Size = new System.Drawing.Size(105, 25);
             this.tb_boxname.TabIndex = 3;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 20);
+            this.label1.Location = new System.Drawing.Point(17, 25);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 12);
+            this.label1.Size = new System.Drawing.Size(82, 15);
             this.label1.TabIndex = 4;
             this.label1.Text = "文本框名称";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 27);
+            this.label2.Location = new System.Drawing.Point(8, 34);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 12);
+            this.label2.Size = new System.Drawing.Size(77, 15);
             this.label2.TabIndex = 5;
             this.label2.Text = "原点(x,y)";
             // 
             // tb_rectx1
             // 
-            this.tb_rectx1.Location = new System.Drawing.Point(76, 18);
+            this.tb_rectx1.Location = new System.Drawing.Point(101, 22);
+            this.tb_rectx1.Margin = new System.Windows.Forms.Padding(4);
             this.tb_rectx1.Name = "tb_rectx1";
-            this.tb_rectx1.Size = new System.Drawing.Size(54, 21);
+            this.tb_rectx1.Size = new System.Drawing.Size(71, 25);
             this.tb_rectx1.TabIndex = 3;
             // 
             // tb_recty1
             // 
-            this.tb_recty1.Location = new System.Drawing.Point(136, 18);
+            this.tb_recty1.Location = new System.Drawing.Point(181, 22);
+            this.tb_recty1.Margin = new System.Windows.Forms.Padding(4);
             this.tb_recty1.Name = "tb_recty1";
-            this.tb_recty1.Size = new System.Drawing.Size(54, 21);
+            this.tb_recty1.Size = new System.Drawing.Size(71, 25);
             this.tb_recty1.TabIndex = 3;
             // 
             // tb_width
             // 
-            this.tb_width.Location = new System.Drawing.Point(76, 45);
+            this.tb_width.Location = new System.Drawing.Point(101, 56);
+            this.tb_width.Margin = new System.Windows.Forms.Padding(4);
             this.tb_width.Name = "tb_width";
-            this.tb_width.Size = new System.Drawing.Size(54, 21);
+            this.tb_width.Size = new System.Drawing.Size(71, 25);
             this.tb_width.TabIndex = 3;
             // 
             // tb_height
             // 
-            this.tb_height.Location = new System.Drawing.Point(136, 45);
+            this.tb_height.Location = new System.Drawing.Point(181, 56);
+            this.tb_height.Margin = new System.Windows.Forms.Padding(4);
             this.tb_height.Name = "tb_height";
-            this.tb_height.Size = new System.Drawing.Size(54, 21);
+            this.tb_height.Size = new System.Drawing.Size(71, 25);
             this.tb_height.TabIndex = 3;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 54);
+            this.label3.Location = new System.Drawing.Point(8, 68);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(71, 12);
+            this.label3.Size = new System.Drawing.Size(93, 15);
             this.label3.TabIndex = 5;
             this.label3.Text = "宽长(x+,y+)";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 27);
+            this.label4.Location = new System.Drawing.Point(11, 34);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(29, 12);
+            this.label4.Size = new System.Drawing.Size(37, 15);
             this.label4.TabIndex = 5;
             this.label4.Text = "字体";
             this.label4.Click += new System.EventHandler(this.label4_Click);
@@ -302,24 +314,27 @@ namespace CardEditor
             this.cb_font.Items.AddRange(new object[] {
             "黑体",
             "微软雅黑"});
-            this.cb_font.Location = new System.Drawing.Point(43, 20);
+            this.cb_font.Location = new System.Drawing.Point(57, 25);
+            this.cb_font.Margin = new System.Windows.Forms.Padding(4);
             this.cb_font.Name = "cb_font";
-            this.cb_font.Size = new System.Drawing.Size(54, 20);
+            this.cb_font.Size = new System.Drawing.Size(71, 23);
             this.cb_font.TabIndex = 6;
             // 
             // tb_fontsize
             // 
-            this.tb_fontsize.Location = new System.Drawing.Point(43, 45);
+            this.tb_fontsize.Location = new System.Drawing.Point(57, 56);
+            this.tb_fontsize.Margin = new System.Windows.Forms.Padding(4);
             this.tb_fontsize.Name = "tb_fontsize";
-            this.tb_fontsize.Size = new System.Drawing.Size(54, 21);
+            this.tb_fontsize.Size = new System.Drawing.Size(71, 25);
             this.tb_fontsize.TabIndex = 3;
             // 
             // btn_startdraw
             // 
             this.btn_startdraw.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_startdraw.Location = new System.Drawing.Point(881, 450);
+            this.btn_startdraw.Location = new System.Drawing.Point(1175, 562);
+            this.btn_startdraw.Margin = new System.Windows.Forms.Padding(4);
             this.btn_startdraw.Name = "btn_startdraw";
-            this.btn_startdraw.Size = new System.Drawing.Size(88, 48);
+            this.btn_startdraw.Size = new System.Drawing.Size(117, 60);
             this.btn_startdraw.TabIndex = 7;
             this.btn_startdraw.Text = "绘制！";
             this.btn_startdraw.UseVisualStyleBackColor = true;
@@ -327,9 +342,10 @@ namespace CardEditor
             // 
             // btn_addbox
             // 
-            this.btn_addbox.Location = new System.Drawing.Point(15, 102);
+            this.btn_addbox.Location = new System.Drawing.Point(20, 128);
+            this.btn_addbox.Margin = new System.Windows.Forms.Padding(4);
             this.btn_addbox.Name = "btn_addbox";
-            this.btn_addbox.Size = new System.Drawing.Size(80, 23);
+            this.btn_addbox.Size = new System.Drawing.Size(107, 29);
             this.btn_addbox.TabIndex = 7;
             this.btn_addbox.Text = "新建文本框";
             this.btn_addbox.UseVisualStyleBackColor = true;
@@ -339,17 +355,19 @@ namespace CardEditor
             // 
             this.tb_outdir.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tb_outdir.Location = new System.Drawing.Point(12, 450);
+            this.tb_outdir.Location = new System.Drawing.Point(16, 562);
+            this.tb_outdir.Margin = new System.Windows.Forms.Padding(4);
             this.tb_outdir.Name = "tb_outdir";
-            this.tb_outdir.Size = new System.Drawing.Size(715, 21);
+            this.tb_outdir.Size = new System.Drawing.Size(952, 25);
             this.tb_outdir.TabIndex = 3;
             // 
             // btn_choosefolder
             // 
             this.btn_choosefolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_choosefolder.Location = new System.Drawing.Point(733, 450);
+            this.btn_choosefolder.Location = new System.Drawing.Point(977, 562);
+            this.btn_choosefolder.Margin = new System.Windows.Forms.Padding(4);
             this.btn_choosefolder.Name = "btn_choosefolder";
-            this.btn_choosefolder.Size = new System.Drawing.Size(142, 23);
+            this.btn_choosefolder.Size = new System.Drawing.Size(189, 29);
             this.btn_choosefolder.TabIndex = 7;
             this.btn_choosefolder.Text = "选择输出文件夹";
             this.btn_choosefolder.UseVisualStyleBackColor = true;
@@ -359,17 +377,19 @@ namespace CardEditor
             // 
             this.tb_textdir.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tb_textdir.Location = new System.Drawing.Point(12, 478);
+            this.tb_textdir.Location = new System.Drawing.Point(16, 598);
+            this.tb_textdir.Margin = new System.Windows.Forms.Padding(4);
             this.tb_textdir.Name = "tb_textdir";
-            this.tb_textdir.Size = new System.Drawing.Size(715, 21);
+            this.tb_textdir.Size = new System.Drawing.Size(952, 25);
             this.tb_textdir.TabIndex = 3;
             // 
             // btn_choosefile
             // 
             this.btn_choosefile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_choosefile.Location = new System.Drawing.Point(733, 476);
+            this.btn_choosefile.Location = new System.Drawing.Point(977, 595);
+            this.btn_choosefile.Margin = new System.Windows.Forms.Padding(4);
             this.btn_choosefile.Name = "btn_choosefile";
-            this.btn_choosefile.Size = new System.Drawing.Size(142, 23);
+            this.btn_choosefile.Size = new System.Drawing.Size(189, 29);
             this.btn_choosefile.TabIndex = 7;
             this.btn_choosefile.Text = "选择输入文件";
             this.btn_choosefile.UseVisualStyleBackColor = true;
@@ -388,22 +408,44 @@ namespace CardEditor
             this.panel1.Controls.Add(this.l_size);
             this.panel1.Controls.Add(this.btn_loadbase);
             this.panel1.Controls.Add(this.pBmainview);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Location = new System.Drawing.Point(16, 15);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(310, 433);
+            this.panel1.Size = new System.Drawing.Size(413, 541);
             this.panel1.TabIndex = 8;
             // 
             // checkBox1
             // 
             this.checkBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(201, 416);
+            this.checkBox1.Location = new System.Drawing.Point(278, 521);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(108, 16);
+            this.checkBox1.Size = new System.Drawing.Size(134, 19);
             this.checkBox1.TabIndex = 4;
             this.checkBox1.Text = "显示文本框区域";
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // l_xyplus
+            // 
+            this.l_xyplus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.l_xyplus.Location = new System.Drawing.Point(3, 455);
+            this.l_xyplus.Name = "l_xyplus";
+            this.l_xyplus.Size = new System.Drawing.Size(407, 15);
+            this.l_xyplus.TabIndex = 12;
+            this.l_xyplus.Text = "700,1000";
+            this.l_xyplus.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.l_xyplus.UseMnemonic = false;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(5, 40);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(31, 15);
+            this.label14.TabIndex = 12;
+            this.label14.Text = "0,0";
             // 
             // l_pos
             // 
@@ -411,9 +453,10 @@ namespace CardEditor
             | System.Windows.Forms.AnchorStyles.Right)));
             this.l_pos.AutoSize = true;
             this.l_pos.Font = new System.Drawing.Font("宋体", 9F);
-            this.l_pos.Location = new System.Drawing.Point(4, 417);
+            this.l_pos.Location = new System.Drawing.Point(5, 521);
+            this.l_pos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.l_pos.Name = "l_pos";
-            this.l_pos.Size = new System.Drawing.Size(89, 12);
+            this.l_pos.Size = new System.Drawing.Size(119, 15);
             this.l_pos.TabIndex = 3;
             this.l_pos.Text = "truepixel(0,0)";
             // 
@@ -423,9 +466,10 @@ namespace CardEditor
             | System.Windows.Forms.AnchorStyles.Right)));
             this.l_size.AutoSize = true;
             this.l_size.Font = new System.Drawing.Font("宋体", 9F);
-            this.l_size.Location = new System.Drawing.Point(4, 390);
+            this.l_size.Location = new System.Drawing.Point(5, 488);
+            this.l_size.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.l_size.Name = "l_size";
-            this.l_size.Size = new System.Drawing.Size(0, 12);
+            this.l_size.Size = new System.Drawing.Size(0, 15);
             this.l_size.TabIndex = 3;
             // 
             // panel2
@@ -438,19 +482,19 @@ namespace CardEditor
             this.panel2.Controls.Add(this.tb_shouldlike);
             this.panel2.Controls.Add(this.groupBox1);
             this.panel2.Controls.Add(this.dgv_boxesdata);
-            this.panel2.Location = new System.Drawing.Point(327, 12);
+            this.panel2.Location = new System.Drawing.Point(436, 15);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(642, 433);
+            this.panel2.Size = new System.Drawing.Size(856, 541);
             this.panel2.TabIndex = 9;
             // 
             // label13
             // 
             this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(4, 417);
-            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label13.Location = new System.Drawing.Point(5, 521);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(635, 12);
+            this.label13.Size = new System.Drawing.Size(803, 15);
             this.label13.TabIndex = 12;
             this.label13.Text = "生成图片默认以第一个文本框内容作为文件名，因此不能使用英文输入法下的< > / \\ | : \" * ?作为第一个文本框内容";
             // 
@@ -458,28 +502,29 @@ namespace CardEditor
             // 
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(4, 405);
-            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label12.Location = new System.Drawing.Point(5, 506);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(221, 12);
+            this.label12.Size = new System.Drawing.Size(277, 15);
             this.label12.TabIndex = 12;
             this.label12.Text = "双击条目以删除，选中后再次点击以编辑";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(4, 148);
+            this.label9.Location = new System.Drawing.Point(5, 185);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(161, 12);
+            this.label9.Size = new System.Drawing.Size(202, 15);
             this.label9.TabIndex = 11;
             this.label9.Text = "输入文件的一行应该长这样：";
             // 
             // tb_shouldlike
             // 
-            this.tb_shouldlike.Location = new System.Drawing.Point(165, 143);
+            this.tb_shouldlike.Location = new System.Drawing.Point(220, 179);
+            this.tb_shouldlike.Margin = new System.Windows.Forms.Padding(4);
             this.tb_shouldlike.Name = "tb_shouldlike";
             this.tb_shouldlike.ReadOnly = true;
-            this.tb_shouldlike.Size = new System.Drawing.Size(388, 21);
+            this.tb_shouldlike.Size = new System.Drawing.Size(516, 25);
             this.tb_shouldlike.TabIndex = 10;
             // 
             // groupBox1
@@ -492,17 +537,33 @@ namespace CardEditor
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(642, 138);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Size = new System.Drawing.Size(856, 172);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "创建文本框";
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.btn_loadcfg);
+            this.groupBox4.Controls.Add(this.btn_savecfg);
+            this.groupBox4.Location = new System.Drawing.Point(720, 25);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox4.Size = new System.Drawing.Size(128, 131);
+            this.groupBox4.TabIndex = 13;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "文本框集合";
+            // 
             // btn_loadcfg
             // 
-            this.btn_loadcfg.Location = new System.Drawing.Point(11, 16);
+            this.btn_loadcfg.Location = new System.Drawing.Point(15, 20);
+            this.btn_loadcfg.Margin = new System.Windows.Forms.Padding(4);
             this.btn_loadcfg.Name = "btn_loadcfg";
-            this.btn_loadcfg.Size = new System.Drawing.Size(75, 23);
+            this.btn_loadcfg.Size = new System.Drawing.Size(100, 29);
             this.btn_loadcfg.TabIndex = 12;
             this.btn_loadcfg.Text = "载入集合";
             this.btn_loadcfg.UseVisualStyleBackColor = true;
@@ -510,23 +571,14 @@ namespace CardEditor
             // 
             // btn_savecfg
             // 
-            this.btn_savecfg.Location = new System.Drawing.Point(11, 45);
+            this.btn_savecfg.Location = new System.Drawing.Point(15, 56);
+            this.btn_savecfg.Margin = new System.Windows.Forms.Padding(4);
             this.btn_savecfg.Name = "btn_savecfg";
-            this.btn_savecfg.Size = new System.Drawing.Size(75, 23);
+            this.btn_savecfg.Size = new System.Drawing.Size(100, 29);
             this.btn_savecfg.TabIndex = 12;
             this.btn_savecfg.Text = "保存集合";
             this.btn_savecfg.UseVisualStyleBackColor = true;
             this.btn_savecfg.Click += new System.EventHandler(this.btn_savecfg_Click);
-            // 
-            // label10
-            // 
-            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label10.Location = new System.Drawing.Point(932, 518);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(41, 12);
-            this.label10.TabIndex = 11;
-            this.label10.Text = "v1.5";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // groupBox2
             // 
@@ -537,12 +589,24 @@ namespace CardEditor
             this.groupBox2.Controls.Add(this.tb_height);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.tb_rectx1);
-            this.groupBox2.Location = new System.Drawing.Point(101, 20);
+            this.groupBox2.Location = new System.Drawing.Point(135, 25);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(224, 105);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Size = new System.Drawing.Size(299, 131);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "位置";
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(8, 94);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(262, 30);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "在预览中分别点击目标文本框左上角和\r\n右下角可自动填入";
             // 
             // groupBox3
             // 
@@ -554,9 +618,11 @@ namespace CardEditor
             this.groupBox3.Controls.Add(this.cb_flag);
             this.groupBox3.Controls.Add(this.cb_font);
             this.groupBox3.Controls.Add(this.tb_fontsize);
-            this.groupBox3.Location = new System.Drawing.Point(331, 20);
+            this.groupBox3.Location = new System.Drawing.Point(441, 25);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(203, 105);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox3.Size = new System.Drawing.Size(271, 131);
             this.groupBox3.TabIndex = 10;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "文字";
@@ -564,18 +630,20 @@ namespace CardEditor
             // colorshow
             // 
             this.colorshow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.colorshow.Location = new System.Drawing.Point(43, 72);
+            this.colorshow.Location = new System.Drawing.Point(57, 90);
+            this.colorshow.Margin = new System.Windows.Forms.Padding(4);
             this.colorshow.Name = "colorshow";
-            this.colorshow.Size = new System.Drawing.Size(54, 21);
+            this.colorshow.Size = new System.Drawing.Size(71, 26);
             this.colorshow.TabIndex = 7;
             this.colorshow.Click += new System.EventHandler(this.colorshow_Click);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(8, 81);
+            this.label6.Location = new System.Drawing.Point(11, 101);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(29, 12);
+            this.label6.Size = new System.Drawing.Size(37, 15);
             this.label6.TabIndex = 5;
             this.label6.Text = "颜色";
             this.label6.Click += new System.EventHandler(this.label4_Click);
@@ -583,9 +651,10 @@ namespace CardEditor
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(8, 54);
+            this.label5.Location = new System.Drawing.Point(11, 68);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(29, 12);
+            this.label5.Size = new System.Drawing.Size(37, 15);
             this.label5.TabIndex = 5;
             this.label5.Text = "大小";
             this.label5.Click += new System.EventHandler(this.label4_Click);
@@ -593,9 +662,10 @@ namespace CardEditor
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(103, 27);
+            this.label11.Location = new System.Drawing.Point(137, 34);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(29, 12);
+            this.label11.Size = new System.Drawing.Size(37, 15);
             this.label11.TabIndex = 5;
             this.label11.Text = "排版";
             this.label11.Click += new System.EventHandler(this.label4_Click);
@@ -609,10 +679,22 @@ namespace CardEditor
             "竖左2",
             "竖右3",
             "整行4096"});
-            this.cb_flag.Location = new System.Drawing.Point(138, 20);
+            this.cb_flag.Location = new System.Drawing.Point(184, 25);
+            this.cb_flag.Margin = new System.Windows.Forms.Padding(4);
             this.cb_flag.Name = "cb_flag";
-            this.cb_flag.Size = new System.Drawing.Size(54, 20);
+            this.cb_flag.Size = new System.Drawing.Size(71, 23);
             this.cb_flag.TabIndex = 6;
+            // 
+            // label10
+            // 
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label10.Location = new System.Drawing.Point(1243, 648);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(55, 15);
+            this.label10.TabIndex = 11;
+            this.label10.Text = "v1.5";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label8
             // 
@@ -620,63 +702,20 @@ namespace CardEditor
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label8.Location = new System.Drawing.Point(10, 506);
+            this.label8.Location = new System.Drawing.Point(13, 632);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(539, 12);
+            this.label8.Size = new System.Drawing.Size(719, 15);
             this.label8.TabIndex = 11;
             this.label8.Text = "Copyright © 2021 PopcornBoom All rights reserved.(Click to drop in at my github m" +
     "ainpage)";
             this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
-            // label7
-            // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 75);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(209, 24);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "在预览中分别点击目标文本框左上角和\r\n右下角可自动填入";
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.btn_loadcfg);
-            this.groupBox4.Controls.Add(this.btn_savecfg);
-            this.groupBox4.Location = new System.Drawing.Point(540, 20);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(96, 105);
-            this.groupBox4.TabIndex = 13;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "文本框集合";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(4, 32);
-            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(23, 12);
-            this.label14.TabIndex = 12;
-            this.label14.Text = "0,0";
-            // 
-            // l_xyplus
-            // 
-            this.l_xyplus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.l_xyplus.Location = new System.Drawing.Point(2, 364);
-            this.l_xyplus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.l_xyplus.Name = "l_xyplus";
-            this.l_xyplus.Size = new System.Drawing.Size(305, 12);
-            this.l_xyplus.TabIndex = 12;
-            this.l_xyplus.Text = "700,1000";
-            this.l_xyplus.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.l_xyplus.UseMnemonic = false;
-            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(985, 539);
+            this.ClientSize = new System.Drawing.Size(1313, 674);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.panel2);
@@ -687,7 +726,8 @@ namespace CardEditor
             this.Controls.Add(this.tb_textdir);
             this.Controls.Add(this.tb_outdir);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(1001, 547);
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MinimumSize = new System.Drawing.Size(1329, 672);
             this.Name = "Form1";
             this.Text = "CardEditor";
             this.ResizeBegin += new System.EventHandler(this.Form1_ResizeBegin);
@@ -701,11 +741,11 @@ namespace CardEditor
             this.panel2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
