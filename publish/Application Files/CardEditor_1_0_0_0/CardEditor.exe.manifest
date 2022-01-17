@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="CardEditor.exe" version="1.0.0.0" publicKeyToken="a01d25063517cf75" language="neutral" processorArchitecture="msil" type="win32" />
+  <description asmv2:iconFile="bitbug_favicon (3).ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="CardEditor" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="CardEditor.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet class="System.Security.PermissionSet" version="1" ID="Custom" SameSite="site" Unrestricted="true" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!-- UAC 清单选项
+             如果想要更改 Windows 用户帐户控制级别，请使用
+             以下节点之一替换 requestedExecutionLevel 节点。n
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+            指定 requestedExecutionLevel 元素将禁用文件和注册表虚拟化。
+            如果你的应用程序需要此虚拟化来实现向后兼容性，则删除此
+            元素。
+        -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="2.0.50727.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="System.Core" version="3.5.0.0" publicKeyToken="b77a5c561934e089" language="neutral" processorArchitecture="msil" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="WindowsBase" version="3.0.0.0" publicKeyToken="31bf3856ad364e35" language="neutral" processorArchitecture="msil" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CardEditor.exe" size="174040">
+      <assemblyIdentity name="CardEditor" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>OQJtWTKcwouXZ71ij3eGXNCgcEk=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="bitbug_favicon (3).ico" size="67646">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>eaGXlXl4wY6fZCQ4gy2IP7PQ40U=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="CardEditor.exe.config" size="958">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>lOCd5CUqV/1PRb+GycqJda5VeSE=</dsig:DigestValue>
+    </hash>
+  </file>
+  <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">
+    <application>
+      <!-- 设计此应用程序与其一起工作且已针对此应用程序进行测试的
+           Windows 版本的列表。取消评论适当的元素，
+           Windows 将自动选择最兼容的环境。 -->
+      <!-- Windows Vista -->
+      <!--<supportedOS Id="{e2011457-1546-43c5-a5fe-008deee3d3f0}" />-->
+      <!-- Windows 7 -->
+      <!--<supportedOS Id="{35138b9a-5d96-4fbd-8e2d-a2440225f93a}" />-->
+      <!-- Windows 8 -->
+      <!--<supportedOS Id="{4a2f28e3-53b9-4441-ba9c-d69d4a4a6e38}" />-->
+      <!-- Windows 8.1 -->
+      <!--<supportedOS Id="{1f676c76-80e1-4239-95bb-83d0f6d0da78}" />-->
+      <!-- Windows 10 -->
+      <!--<supportedOS Id="{8e0f7a12-bfb3-4fe8-b9a5-48fd50a15a9a}" />-->
+    </application>
+  </compatibility>
+<publisherIdentity name="CN=POPCORNBOOM\Administrator" issuerKeyHash="7968ef52154dc432e973faee7eb81f874faece96" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>2SbglROI/5//ugI/HHcjiN5Ta1k=</DigestValue></Reference></SignedInfo><SignatureValue>r9b6Lg1oqiAMlP/6P6PN9AmPa6YwTwlHMjVeLMGpYwD6RW1AssrYws4VvfLGO/SCXWIUDiPjBrZOPQJl8tMJ26Z3MSJwkACMOJBHQjIZw5+2TVVn/qPv8RDGuVHQWaJEubuDhX2leIEyuZ+Ggh6hWG3esHot0YrfGZBc8dapQkE=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>vE05sUoLf1td2obN5ucpKE8GLBg7Cl1IoUgmCzEBnNvjLhjs5PMvmweO24FYPQUSO2qzIMqWlRLTdC0oqHcOJVpBGaoHrQHrLQn548NjdMEc9W5i724bbqzRzA0ZoFF6k1gaZl4e9vhX6IAfaR9bNXClYKhi3ntCre4QFCfDnuU=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="596b53de8823771c3f02baff9fff881395e026d9" Description="" Url=""><as:assemblyIdentity name="CardEditor.exe" version="1.0.0.0" publicKeyToken="a01d25063517cf75" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=POPCORNBOOM\Administrator</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>b74Vxl07Y63pS7Lbrfjy+1TRJhE=</DigestValue></Reference></SignedInfo><SignatureValue>BkZVZ5nfSILzGohpwghyoulFwRiR65GEUdX14QoxFZ3Vh5rU/s9O6daHd4Zgn0CRSssR5UIGQL4xp3Qr0QfwU7R6ASJeF1pQmhuHb/a45d3SRn5AshveIqMuXH7DGb5b1kiKWNq9OSBJl1ykwzOU9ZgNh9vaKq0Wr2MrXyYSWt4=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>vE05sUoLf1td2obN5ucpKE8GLBg7Cl1IoUgmCzEBnNvjLhjs5PMvmweO24FYPQUSO2qzIMqWlRLTdC0oqHcOJVpBGaoHrQHrLQn548NjdMEc9W5i724bbqzRzA0ZoFF6k1gaZl4e9vhX6IAfaR9bNXClYKhi3ntCre4QFCfDnuU=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB/TCCAWagAwIBAgIQb+RCay9zg5hJIbad0K3VSzANBgkqhkiG9w0BAQUFADA9MTswOQYDVQQDHjIAUABPAFAAQwBPAFIATgBCAE8ATwBNAFwAQQBkAG0AaQBuAGkAcwB0AHIAYQB0AG8AcjAeFw0yMTEwMjkxNjA2MDFaFw0yMjEwMjkyMjA2MDFaMD0xOzA5BgNVBAMeMgBQAE8AUABDAE8AUgBOAEIATwBPAE0AXABBAGQAbQBpAG4AaQBzAHQAcgBhAHQAbwByMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC8TTmxSgt/W13ahs3m5ykoTwYsGDsKXUihSCYLMQGc2+MuGOzk8y+bB47bgVg9BRI7arMgypaVEtN0LSiodw4lWkEZqgetAestCfnjw2N0wRz1bmLvbhturNHMDRmgUXqTWBpmXh72+FfogB9pH1s1cKVgqGLee0Kt7hAUJ8Oe5QIDAQABMA0GCSqGSIb3DQEBBQUAA4GBACTrIyMRZNnLIaJNIfqDUDKadSQ/LuWatD81EfEHqfTPHyCYJWCcxXWNkldORZs95V+s3XEQrSn8yLBFiA5LEo16eWI7FhJmVGoD5WfLlcNLPKj0ZJC9+bcV+LtF+LONtCwDzowsgXsjOud/hygGgQz1mFJF/cDCS77IuqCkeZt5</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

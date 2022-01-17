@@ -46,5 +46,17 @@ namespace CardEditor.Properties {
                 this["inputtxtdir"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string srcpicdir {
+            get {
+                return ((string)(this["srcpicdir"]));
+            }
+            set {
+                this["srcpicdir"] = value;
+            }
+        }
     }
 }
