@@ -43,7 +43,6 @@
 
 
 ## 快速开始
-- CardEditor/bin/release
 - 宣发与实际操作演示视频： [Bilibili](https://m.bilibili.com/video/BV1j44y1L7Kw)
 - 下载链接：[蓝奏云密码:CARD](https://wwd.lanzoup.com/b030n4c3g)
 
