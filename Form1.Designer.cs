@@ -827,10 +827,10 @@ namespace CardEditor
             this.label8.ForeColor = System.Drawing.SystemColors.AppWorkspace;
             this.label8.Location = new System.Drawing.Point(9, 620);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(539, 12);
+            this.label8.Size = new System.Drawing.Size(509, 12);
             this.label8.TabIndex = 11;
-            this.label8.Text = "Copyright © 2021 PopcornBoom All rights reserved.(Click to drop in at my github m" +
-    "ainpage)";
+            this.label8.Text = "Copyright © 2021 PopcornBoom All rights reserved.(Click to drop in at project pag" +
+    "es)";
             this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // btn_report

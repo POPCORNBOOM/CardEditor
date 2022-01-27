@@ -521,7 +521,7 @@ namespace CardEditor
 
         private void label8_Click(object sender, EventArgs e)
         {
-            Process.Start("https://github.com/POPCORNBOOM");
+            Process.Start("https://github.com/POPCORNBOOM/CardEditor");
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
