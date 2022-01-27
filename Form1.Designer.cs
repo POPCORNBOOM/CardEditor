@@ -32,16 +32,6 @@ namespace CardEditor
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.dgv_boxesdata = new System.Windows.Forms.DataGridView();
-            this.boxname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rectx1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.recty1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rectx2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.recty2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.font = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fontsize = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.color = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.flag = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pic = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.btn_loadbase = new System.Windows.Forms.Button();
             this.tb_boxname = new System.Windows.Forms.TextBox();
             this.l_boxname = new System.Windows.Forms.Label();
@@ -61,12 +51,7 @@ namespace CardEditor
             this.label14 = new System.Windows.Forms.Label();
             this.l_pos = new System.Windows.Forms.Label();
             this.l_size = new System.Windows.Forms.Label();
-            this.pBmainview = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btn_movedown = new System.Windows.Forms.Button();
-            this.btn_moveup = new System.Windows.Forms.Button();
-            this.btn_duplicate = new System.Windows.Forms.Button();
-            this.btn_del = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -100,9 +85,23 @@ namespace CardEditor
             this.btn_choosepicfolder = new System.Windows.Forms.Button();
             this.btn_opensavefolder = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
+            this.btn_movedown = new System.Windows.Forms.Button();
+            this.btn_moveup = new System.Windows.Forms.Button();
+            this.btn_duplicate = new System.Windows.Forms.Button();
+            this.btn_del = new System.Windows.Forms.Button();
+            this.pBmainview = new System.Windows.Forms.PictureBox();
+            this.boxname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rectx1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.recty1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rectx2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.recty2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.font = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fontsize = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.color = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.flag = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pic = new System.Windows.Forms.DataGridViewComboBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_boxesdata)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pBmainview)).BeginInit();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -114,6 +113,7 @@ namespace CardEditor
             ((System.ComponentModel.ISupportInitialize)(this.nUD_rectx1)).BeginInit();
             this.gb_text.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUD_fontsize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pBmainview)).BeginInit();
             this.SuspendLayout();
             // 
             // dgv_boxesdata
@@ -122,8 +122,6 @@ namespace CardEditor
             this.dgv_boxesdata.AllowUserToDeleteRows = false;
             this.dgv_boxesdata.AllowUserToResizeColumns = false;
             this.dgv_boxesdata.AllowUserToResizeRows = false;
-            this.dgv_boxesdata.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv_boxesdata.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_boxesdata.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_boxesdata.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -147,97 +145,18 @@ namespace CardEditor
             this.dgv_boxesdata.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_boxesdata.Location = new System.Drawing.Point(8, 255);
             this.dgv_boxesdata.Margin = new System.Windows.Forms.Padding(4);
+            this.dgv_boxesdata.MultiSelect = false;
             this.dgv_boxesdata.Name = "dgv_boxesdata";
+            this.dgv_boxesdata.ReadOnly = true;
+            this.dgv_boxesdata.RowHeadersVisible = false;
             this.dgv_boxesdata.RowHeadersWidth = 62;
             this.dgv_boxesdata.RowTemplate.Height = 23;
-            this.dgv_boxesdata.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgv_boxesdata.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_boxesdata.Size = new System.Drawing.Size(1017, 338);
             this.dgv_boxesdata.TabIndex = 1;
             this.dgv_boxesdata.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_boxesdata_CellClick);
             this.dgv_boxesdata.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_boxesdata_CellEndEdit);
-            // 
-            // boxname
-            // 
-            this.boxname.HeaderText = "名称";
-            this.boxname.MinimumWidth = 8;
-            this.boxname.Name = "boxname";
-            this.boxname.Width = 70;
-            // 
-            // rectx1
-            // 
-            this.rectx1.HeaderText = "x1";
-            this.rectx1.MinimumWidth = 8;
-            this.rectx1.Name = "rectx1";
-            this.rectx1.Width = 50;
-            // 
-            // recty1
-            // 
-            this.recty1.HeaderText = "y1";
-            this.recty1.MinimumWidth = 8;
-            this.recty1.Name = "recty1";
-            this.recty1.Width = 50;
-            // 
-            // rectx2
-            // 
-            this.rectx2.HeaderText = "x2";
-            this.rectx2.MinimumWidth = 8;
-            this.rectx2.Name = "rectx2";
-            this.rectx2.Width = 50;
-            // 
-            // recty2
-            // 
-            this.recty2.HeaderText = "y2";
-            this.recty2.MinimumWidth = 8;
-            this.recty2.Name = "recty2";
-            this.recty2.Width = 50;
-            // 
-            // font
-            // 
-            this.font.HeaderText = "字体";
-            this.font.MinimumWidth = 8;
-            this.font.Name = "font";
-            this.font.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.font.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.font.Width = 50;
-            // 
-            // fontsize
-            // 
-            this.fontsize.HeaderText = "字体大小";
-            this.fontsize.MinimumWidth = 8;
-            this.fontsize.Name = "fontsize";
-            this.fontsize.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.fontsize.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.fontsize.Width = 70;
-            // 
-            // color
-            // 
-            this.color.HeaderText = "颜色";
-            this.color.MinimumWidth = 8;
-            this.color.Name = "color";
-            this.color.ReadOnly = true;
-            this.color.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.color.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.color.Width = 50;
-            // 
-            // flag
-            // 
-            this.flag.HeaderText = "对齐";
-            this.flag.MinimumWidth = 8;
-            this.flag.Name = "flag";
-            this.flag.Width = 40;
-            // 
-            // pic
-            // 
-            this.pic.HeaderText = "图片引用方式";
-            this.pic.Items.AddRange(new object[] {
-            "仅文字无图",
-            "从绝对路径",
-            "从相对路径"});
-            this.pic.MinimumWidth = 6;
-            this.pic.Name = "pic";
-            this.pic.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.pic.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.pic.Width = 110;
+            this.dgv_boxesdata.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_boxesdata_CellValueChanged);
             // 
             // btn_loadbase
             // 
@@ -464,26 +383,6 @@ namespace CardEditor
             this.l_size.TabIndex = 3;
             this.l_size.Text = "x";
             // 
-            // pBmainview
-            // 
-            this.pBmainview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pBmainview.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pBmainview.Image = global::CardEditor.Properties.Resources._1;
-            this.pBmainview.Location = new System.Drawing.Point(0, 59);
-            this.pBmainview.Margin = new System.Windows.Forms.Padding(4);
-            this.pBmainview.Name = "pBmainview";
-            this.pBmainview.Size = new System.Drawing.Size(411, 482);
-            this.pBmainview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pBmainview.TabIndex = 0;
-            this.pBmainview.TabStop = false;
-            this.pBmainview.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pBmainview_DrawArea_get);
-            this.pBmainview.MouseLeave += new System.EventHandler(this.pBmainview_MouseLeave);
-            this.pBmainview.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pBmainview_MouseMove);
-            this.pBmainview.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pBmainview_MouseUp);
-            this.pBmainview.Resize += new System.EventHandler(this.pBmainview_Resize);
-            // 
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -503,60 +402,6 @@ namespace CardEditor
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1025, 631);
             this.panel2.TabIndex = 9;
-            // 
-            // btn_movedown
-            // 
-            this.btn_movedown.BackgroundImage = global::CardEditor.Properties.Resources.down32x;
-            this.btn_movedown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_movedown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_movedown.Location = new System.Drawing.Point(983, 208);
-            this.btn_movedown.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_movedown.Name = "btn_movedown";
-            this.btn_movedown.Size = new System.Drawing.Size(43, 40);
-            this.btn_movedown.TabIndex = 13;
-            this.btn_movedown.UseVisualStyleBackColor = true;
-            this.btn_movedown.Click += new System.EventHandler(this.btn_movedown_Click);
-            // 
-            // btn_moveup
-            // 
-            this.btn_moveup.BackgroundImage = global::CardEditor.Properties.Resources.up32x;
-            this.btn_moveup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_moveup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_moveup.Location = new System.Drawing.Point(932, 208);
-            this.btn_moveup.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_moveup.Name = "btn_moveup";
-            this.btn_moveup.Size = new System.Drawing.Size(43, 40);
-            this.btn_moveup.TabIndex = 13;
-            this.btn_moveup.UseVisualStyleBackColor = true;
-            this.btn_moveup.Click += new System.EventHandler(this.btn_moveup_Click);
-            // 
-            // btn_duplicate
-            // 
-            this.btn_duplicate.BackgroundImage = global::CardEditor.Properties.Resources.duplicate32x;
-            this.btn_duplicate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_duplicate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_duplicate.Location = new System.Drawing.Point(832, 208);
-            this.btn_duplicate.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_duplicate.Name = "btn_duplicate";
-            this.btn_duplicate.Size = new System.Drawing.Size(43, 40);
-            this.btn_duplicate.TabIndex = 13;
-            this.btn_duplicate.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.btn_duplicate.UseVisualStyleBackColor = true;
-            this.btn_duplicate.Click += new System.EventHandler(this.btn_duplicate_Click);
-            // 
-            // btn_del
-            // 
-            this.btn_del.BackgroundImage = global::CardEditor.Properties.Resources.del32x;
-            this.btn_del.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_del.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_del.Location = new System.Drawing.Point(883, 208);
-            this.btn_del.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_del.Name = "btn_del";
-            this.btn_del.Size = new System.Drawing.Size(43, 40);
-            this.btn_del.TabIndex = 13;
-            this.btn_del.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.btn_del.UseVisualStyleBackColor = true;
-            this.btn_del.Click += new System.EventHandler(this.btn_del_Click);
             // 
             // label13
             // 
@@ -994,6 +839,178 @@ namespace CardEditor
     "1+原高)";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // btn_movedown
+            // 
+            this.btn_movedown.BackgroundImage = global::CardEditor.Properties.Resources.down32x;
+            this.btn_movedown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_movedown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_movedown.Location = new System.Drawing.Point(983, 208);
+            this.btn_movedown.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_movedown.Name = "btn_movedown";
+            this.btn_movedown.Size = new System.Drawing.Size(43, 40);
+            this.btn_movedown.TabIndex = 13;
+            this.btn_movedown.UseVisualStyleBackColor = true;
+            this.btn_movedown.Click += new System.EventHandler(this.btn_movedown_Click);
+            // 
+            // btn_moveup
+            // 
+            this.btn_moveup.BackgroundImage = global::CardEditor.Properties.Resources.up32x;
+            this.btn_moveup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_moveup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_moveup.Location = new System.Drawing.Point(932, 208);
+            this.btn_moveup.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_moveup.Name = "btn_moveup";
+            this.btn_moveup.Size = new System.Drawing.Size(43, 40);
+            this.btn_moveup.TabIndex = 13;
+            this.btn_moveup.UseVisualStyleBackColor = true;
+            this.btn_moveup.Click += new System.EventHandler(this.btn_moveup_Click);
+            // 
+            // btn_duplicate
+            // 
+            this.btn_duplicate.BackgroundImage = global::CardEditor.Properties.Resources.duplicate32x;
+            this.btn_duplicate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_duplicate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_duplicate.Location = new System.Drawing.Point(832, 208);
+            this.btn_duplicate.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_duplicate.Name = "btn_duplicate";
+            this.btn_duplicate.Size = new System.Drawing.Size(43, 40);
+            this.btn_duplicate.TabIndex = 13;
+            this.btn_duplicate.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btn_duplicate.UseVisualStyleBackColor = true;
+            this.btn_duplicate.Click += new System.EventHandler(this.btn_duplicate_Click);
+            // 
+            // btn_del
+            // 
+            this.btn_del.BackgroundImage = global::CardEditor.Properties.Resources.del32x;
+            this.btn_del.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_del.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_del.Location = new System.Drawing.Point(883, 208);
+            this.btn_del.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_del.Name = "btn_del";
+            this.btn_del.Size = new System.Drawing.Size(43, 40);
+            this.btn_del.TabIndex = 13;
+            this.btn_del.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btn_del.UseVisualStyleBackColor = true;
+            this.btn_del.Click += new System.EventHandler(this.btn_del_Click);
+            // 
+            // pBmainview
+            // 
+            this.pBmainview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pBmainview.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pBmainview.Image = global::CardEditor.Properties.Resources._1;
+            this.pBmainview.Location = new System.Drawing.Point(0, 59);
+            this.pBmainview.Margin = new System.Windows.Forms.Padding(4);
+            this.pBmainview.Name = "pBmainview";
+            this.pBmainview.Size = new System.Drawing.Size(411, 482);
+            this.pBmainview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pBmainview.TabIndex = 0;
+            this.pBmainview.TabStop = false;
+            this.pBmainview.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pBmainview_DrawArea_get);
+            this.pBmainview.MouseLeave += new System.EventHandler(this.pBmainview_MouseLeave);
+            this.pBmainview.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pBmainview_MouseMove);
+            this.pBmainview.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pBmainview_MouseUp);
+            this.pBmainview.Resize += new System.EventHandler(this.pBmainview_Resize);
+            // 
+            // boxname
+            // 
+            this.boxname.Frozen = true;
+            this.boxname.HeaderText = "名称";
+            this.boxname.MinimumWidth = 8;
+            this.boxname.Name = "boxname";
+            this.boxname.ReadOnly = true;
+            this.boxname.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.boxname.Width = 70;
+            // 
+            // rectx1
+            // 
+            this.rectx1.HeaderText = "x1";
+            this.rectx1.MinimumWidth = 8;
+            this.rectx1.Name = "rectx1";
+            this.rectx1.ReadOnly = true;
+            this.rectx1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.rectx1.Width = 50;
+            // 
+            // recty1
+            // 
+            this.recty1.HeaderText = "y1";
+            this.recty1.MinimumWidth = 8;
+            this.recty1.Name = "recty1";
+            this.recty1.ReadOnly = true;
+            this.recty1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.recty1.Width = 50;
+            // 
+            // rectx2
+            // 
+            this.rectx2.HeaderText = "x2";
+            this.rectx2.MinimumWidth = 8;
+            this.rectx2.Name = "rectx2";
+            this.rectx2.ReadOnly = true;
+            this.rectx2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.rectx2.Width = 50;
+            // 
+            // recty2
+            // 
+            this.recty2.HeaderText = "y2";
+            this.recty2.MinimumWidth = 8;
+            this.recty2.Name = "recty2";
+            this.recty2.ReadOnly = true;
+            this.recty2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.recty2.Width = 50;
+            // 
+            // font
+            // 
+            this.font.HeaderText = "字体";
+            this.font.MinimumWidth = 8;
+            this.font.Name = "font";
+            this.font.ReadOnly = true;
+            this.font.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.font.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.font.Width = 150;
+            // 
+            // fontsize
+            // 
+            this.fontsize.HeaderText = "字体大小";
+            this.fontsize.MinimumWidth = 8;
+            this.fontsize.Name = "fontsize";
+            this.fontsize.ReadOnly = true;
+            this.fontsize.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.fontsize.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.fontsize.Width = 80;
+            // 
+            // color
+            // 
+            this.color.HeaderText = "颜色";
+            this.color.MinimumWidth = 8;
+            this.color.Name = "color";
+            this.color.ReadOnly = true;
+            this.color.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.color.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.color.Width = 50;
+            // 
+            // flag
+            // 
+            this.flag.HeaderText = "对齐";
+            this.flag.MinimumWidth = 8;
+            this.flag.Name = "flag";
+            this.flag.ReadOnly = true;
+            this.flag.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.flag.Width = 60;
+            // 
+            // pic
+            // 
+            this.pic.HeaderText = "图片引用方式";
+            this.pic.Items.AddRange(new object[] {
+            "仅文字无图",
+            "从绝对路径",
+            "从相对路径"});
+            this.pic.MinimumWidth = 6;
+            this.pic.Name = "pic";
+            this.pic.ReadOnly = true;
+            this.pic.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.pic.Width = 110;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -1024,7 +1041,6 @@ namespace CardEditor
             ((System.ComponentModel.ISupportInitialize)(this.dgv_boxesdata)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pBmainview)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -1041,6 +1057,7 @@ namespace CardEditor
             this.gb_text.ResumeLayout(false);
             this.gb_text.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUD_fontsize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pBmainview)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1105,6 +1122,8 @@ namespace CardEditor
         private System.Windows.Forms.NumericUpDown nUD_recty2;
         private System.Windows.Forms.NumericUpDown nUD_rectx2;
         private System.Windows.Forms.NumericUpDown nUD_rectx1;
+        private System.Windows.Forms.Button btn_opensavefolder;
+        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.DataGridViewTextBoxColumn boxname;
         private System.Windows.Forms.DataGridViewTextBoxColumn rectx1;
         private System.Windows.Forms.DataGridViewTextBoxColumn recty1;
@@ -1115,8 +1134,6 @@ namespace CardEditor
         private System.Windows.Forms.DataGridViewTextBoxColumn color;
         private System.Windows.Forms.DataGridViewTextBoxColumn flag;
         private System.Windows.Forms.DataGridViewComboBoxColumn pic;
-        private System.Windows.Forms.Button btn_opensavefolder;
-        private System.Windows.Forms.Label label17;
     }
 }
 
