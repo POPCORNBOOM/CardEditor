@@ -52,7 +52,10 @@
             this.cb_flag = new System.Windows.Forms.ComboBox();
             this.cb_font = new System.Windows.Forms.ComboBox();
             this.l_boxname = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.btn_movedown = new System.Windows.Forms.Button();
+            this.btn_moveup = new System.Windows.Forms.Button();
+            this.btn_duplicate = new System.Windows.Forms.Button();
+            this.btn_del = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -72,9 +75,9 @@
             this.groupBox1.Controls.Add(this.gb_text);
             this.groupBox1.Controls.Add(this.l_boxname);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox1.Location = new System.Drawing.Point(0, 25);
+            this.groupBox1.Location = new System.Drawing.Point(0, 47);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(252, 470);
+            this.groupBox1.Size = new System.Drawing.Size(252, 448);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "编辑文本框/图片框";
@@ -355,21 +358,65 @@
             this.l_boxname.TabIndex = 4;
             this.l_boxname.Text = "文本框名称";
             // 
-            // label7
+            // btn_movedown
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 9);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(23, 12);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "行:";
+            this.btn_movedown.BackgroundImage = global::CardEditor.Properties.Resources.down32x;
+            this.btn_movedown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_movedown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_movedown.Location = new System.Drawing.Point(214, 9);
+            this.btn_movedown.Name = "btn_movedown";
+            this.btn_movedown.Size = new System.Drawing.Size(32, 32);
+            this.btn_movedown.TabIndex = 14;
+            this.btn_movedown.UseVisualStyleBackColor = true;
+            this.btn_movedown.Click += new System.EventHandler(this.btn_movedown_Click);
+            // 
+            // btn_moveup
+            // 
+            this.btn_moveup.BackgroundImage = global::CardEditor.Properties.Resources.up32x;
+            this.btn_moveup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_moveup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_moveup.Location = new System.Drawing.Point(176, 9);
+            this.btn_moveup.Name = "btn_moveup";
+            this.btn_moveup.Size = new System.Drawing.Size(32, 32);
+            this.btn_moveup.TabIndex = 15;
+            this.btn_moveup.UseVisualStyleBackColor = true;
+            this.btn_moveup.Click += new System.EventHandler(this.btn_moveup_Click);
+            // 
+            // btn_duplicate
+            // 
+            this.btn_duplicate.BackgroundImage = global::CardEditor.Properties.Resources.duplicate32x;
+            this.btn_duplicate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_duplicate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_duplicate.Location = new System.Drawing.Point(101, 9);
+            this.btn_duplicate.Name = "btn_duplicate";
+            this.btn_duplicate.Size = new System.Drawing.Size(32, 32);
+            this.btn_duplicate.TabIndex = 16;
+            this.btn_duplicate.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btn_duplicate.UseVisualStyleBackColor = true;
+            this.btn_duplicate.Click += new System.EventHandler(this.btn_duplicate_Click);
+            // 
+            // btn_del
+            // 
+            this.btn_del.BackgroundImage = global::CardEditor.Properties.Resources.del32x;
+            this.btn_del.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_del.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_del.Location = new System.Drawing.Point(139, 9);
+            this.btn_del.Name = "btn_del";
+            this.btn_del.Size = new System.Drawing.Size(32, 32);
+            this.btn_del.TabIndex = 17;
+            this.btn_del.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btn_del.UseVisualStyleBackColor = true;
+            this.btn_del.Click += new System.EventHandler(this.btn_del_Click);
             // 
             // Inspector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(252, 495);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.btn_movedown);
+            this.Controls.Add(this.btn_moveup);
+            this.Controls.Add(this.btn_duplicate);
+            this.Controls.Add(this.btn_del);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
@@ -394,7 +441,6 @@
             this.gb_text.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tb_fontSize)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -423,6 +469,9 @@
         private System.Windows.Forms.ComboBox cb_flag;
         private System.Windows.Forms.ComboBox cb_font;
         private System.Windows.Forms.Label l_boxname;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btn_movedown;
+        private System.Windows.Forms.Button btn_moveup;
+        private System.Windows.Forms.Button btn_duplicate;
+        private System.Windows.Forms.Button btn_del;
     }
 }

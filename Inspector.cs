@@ -87,7 +87,7 @@ namespace CardEditor
 
         private void Inspector_FormClosed(object sender, FormClosedEventArgs e)
         {
-            f.isInspectorOn = false;
+            f.isInspectorOn = false;        //NOTICE
         }
 
         private void Cb_font_TextChanged(object sender, EventArgs e)
@@ -126,6 +126,36 @@ namespace CardEditor
         private void Cb_picsrcfrom_TextChanged(object sender, EventArgs e)
         {
             f.boxes[f.selectedIndex].pictureSrc = CardBox.ParsePictureSrc(cb_picsrcfrom.Text); RefreshV();
+        }
+
+        private void btn_duplicate_Click(object sender, EventArgs e)
+        {
+            f.boxes.Add(box);RefreshV();
+        }
+
+        private void btn_del_Click(object sender, EventArgs e)
+        {
+            f.boxes.Remove(box);RefreshV();
+        }
+
+        private void btn_moveup_Click(object sender, EventArgs e)
+        {
+            if (f.selectedIndex == 0 || box == null) return;
+            CardBox i = f.boxes[f.selectedIndex - 1];
+            f.boxes[f.selectedIndex - 1] = box;
+            f.boxes[f.selectedIndex] = i;
+            f.selectedIndex -= 1;
+            RefreshV();
+        }
+
+        private void btn_movedown_Click(object sender, EventArgs e)
+        {
+            if (f.selectedIndex == f.boxes.Count - 1 || box == null) return;
+            CardBox i = f.boxes[f.selectedIndex + 1];
+            f.boxes[f.selectedIndex + 1] = box;
+            f.boxes[f.selectedIndex] = i;
+            f.selectedIndex += 1;
+            RefreshV();
         }
     }
 }
