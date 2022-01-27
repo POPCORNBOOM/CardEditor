@@ -46,9 +46,9 @@ namespace CardEditor
             cb_flag.Text = CardBox.FlagToString(box.flag);
             cb_picsrcfrom.Text = CardBox.PictureSrcToString(box.pictureSrc);
             colorshow.BackColor = box.color;
-            l_selectedline.Text = "行:" + f.selectedIndex + 1;       //在属性面板中添加显示行，以免同名box发生混淆
+            l_selectedline.Text = "编辑行:" + (f.selectedIndex + 1);       //在属性面板中添加显示行，以免同名box发生混淆
         }
-
+        /*
         private void BoxName_TextChanged(object sender, EventArgs e)
         {
             f.boxes[f.selectedIndex].name = boxName.Text;
@@ -77,7 +77,7 @@ namespace CardEditor
         {
             f.boxes[f.selectedIndex].rx2 = (int)tb_rx2.Value; RefreshV();
         }
-
+        */
 
 
         private void RefreshV()
@@ -90,7 +90,7 @@ namespace CardEditor
         {
             f.isInspectorOn = false;
         }
-
+        /*
         private void Cb_font_TextChanged(object sender, EventArgs e)
         {
             f.boxes[f.selectedIndex].font = new Font(cb_font.Text, (float)tb_fontSize.Value); RefreshV();
@@ -105,6 +105,7 @@ namespace CardEditor
         {
             f.boxes[f.selectedIndex].flag = CardBox.ParseFlag(cb_flag.Text); RefreshV();
         }
+        */
 
         private void Colorshow_Click(object sender, EventArgs e)
         {
@@ -119,6 +120,7 @@ namespace CardEditor
             }
         }
 
+        /*
         private void Colorshow_BackColorChanged(object sender, EventArgs e)
         {
             f.boxes[f.selectedIndex].color = colorshow.BackColor; RefreshV();
@@ -128,7 +130,7 @@ namespace CardEditor
         {
             f.boxes[f.selectedIndex].pictureSrc = CardBox.ParsePictureSrc(cb_picsrcfrom.Text); RefreshV();
         }
-
+        */
 
         //框的四个操作
         private void btn_duplicate_Click(object sender, EventArgs e)
@@ -171,6 +173,27 @@ namespace CardEditor
             f.selectedIndex += 1;
             UpdateData();
             RefreshV();
+        }
+
+        private void btn_SaveEdit_Click(object sender, EventArgs e)
+        {
+            f.boxes[f.selectedIndex].name = boxName.Text;
+            f.boxes[f.selectedIndex].rx1 = (int)tb_rx1.Value;
+            f.boxes[f.selectedIndex].ry1 = (int)tb_ry1.Value;
+            f.boxes[f.selectedIndex].ry2 = (int)tb_ry2.Value;
+            f.boxes[f.selectedIndex].rx2 = (int)tb_rx2.Value;
+            f.boxes[f.selectedIndex].font = new Font(cb_font.Text, (float)tb_fontSize.Value);
+            f.boxes[f.selectedIndex].font = new Font(cb_font.Text, (float)tb_fontSize.Value);
+            f.boxes[f.selectedIndex].flag = CardBox.ParseFlag(cb_flag.Text);
+            f.boxes[f.selectedIndex].color = colorshow.BackColor;
+            f.boxes[f.selectedIndex].pictureSrc = CardBox.ParsePictureSrc(cb_picsrcfrom.Text);
+            RefreshV();
+
+        }
+
+        private void btn_CancelEdit_Click(object sender, EventArgs e)
+        {
+            UpdateData();
         }
     }
 }

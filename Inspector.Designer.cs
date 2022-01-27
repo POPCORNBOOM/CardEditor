@@ -57,6 +57,10 @@
             this.btn_duplicate = new System.Windows.Forms.Button();
             this.btn_del = new System.Windows.Forms.Button();
             this.l_selectedline = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_SaveEdit = new System.Windows.Forms.Button();
+            this.btn_CancelEdit = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -66,19 +70,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.tb_rx1)).BeginInit();
             this.gb_text.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tb_fontSize)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
             this.groupBox1.Controls.Add(this.groupBox5);
             this.groupBox1.Controls.Add(this.boxName);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.gb_text);
             this.groupBox1.Controls.Add(this.l_boxname);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox1.Location = new System.Drawing.Point(0, 47);
+            this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(252, 448);
+            this.groupBox1.Size = new System.Drawing.Size(246, 430);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "编辑文本框/图片框";
@@ -90,7 +96,7 @@
             this.groupBox5.Controls.Add(this.label1);
             this.groupBox5.Location = new System.Drawing.Point(15, 330);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(225, 134);
+            this.groupBox5.Size = new System.Drawing.Size(225, 76);
             this.groupBox5.TabIndex = 14;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "图片";
@@ -108,7 +114,6 @@
             this.cb_picsrcfrom.Name = "cb_picsrcfrom";
             this.cb_picsrcfrom.Size = new System.Drawing.Size(88, 20);
             this.cb_picsrcfrom.TabIndex = 6;
-            this.cb_picsrcfrom.TextChanged += new System.EventHandler(this.Cb_picsrcfrom_TextChanged);
             // 
             // label16
             // 
@@ -121,7 +126,6 @@
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(107, 42);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -136,7 +140,6 @@
             this.boxName.Name = "boxName";
             this.boxName.Size = new System.Drawing.Size(80, 21);
             this.boxName.TabIndex = 3;
-            this.boxName.TextChanged += new System.EventHandler(this.BoxName_TextChanged);
             // 
             // groupBox2
             // 
@@ -169,7 +172,6 @@
             this.tb_ry1.Name = "tb_ry1";
             this.tb_ry1.Size = new System.Drawing.Size(54, 21);
             this.tb_ry1.TabIndex = 13;
-            this.tb_ry1.ValueChanged += new System.EventHandler(this.Tb_ry1_ValueChanged);
             // 
             // tb_ry2
             // 
@@ -182,7 +184,6 @@
             this.tb_ry2.Name = "tb_ry2";
             this.tb_ry2.Size = new System.Drawing.Size(54, 21);
             this.tb_ry2.TabIndex = 13;
-            this.tb_ry2.ValueChanged += new System.EventHandler(this.Tb_ry2_ValueChanged);
             // 
             // tb_rx2
             // 
@@ -195,7 +196,6 @@
             this.tb_rx2.Name = "tb_rx2";
             this.tb_rx2.Size = new System.Drawing.Size(54, 21);
             this.tb_rx2.TabIndex = 13;
-            this.tb_rx2.ValueChanged += new System.EventHandler(this.Tb_rx2_ValueChanged);
             // 
             // tb_rx1
             // 
@@ -213,7 +213,6 @@
             this.tb_rx1.Name = "tb_rx1";
             this.tb_rx1.Size = new System.Drawing.Size(54, 21);
             this.tb_rx1.TabIndex = 13;
-            this.tb_rx1.ValueChanged += new System.EventHandler(this.Tb_rx1_ValueChanged);
             // 
             // label2
             // 
@@ -271,16 +270,15 @@
             0,
             0,
             0});
-            this.tb_fontSize.ValueChanged += new System.EventHandler(this.Tb_fontSize_ValueChanged);
             // 
             // colorshow
             // 
+            this.colorshow.BackColor = System.Drawing.SystemColors.Control;
             this.colorshow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.colorshow.Location = new System.Drawing.Point(43, 98);
             this.colorshow.Name = "colorshow";
             this.colorshow.Size = new System.Drawing.Size(143, 20);
             this.colorshow.TabIndex = 7;
-            this.colorshow.BackColorChanged += new System.EventHandler(this.Colorshow_BackColorChanged);
             this.colorshow.Click += new System.EventHandler(this.Colorshow_Click);
             // 
             // label6
@@ -334,7 +332,6 @@
             this.cb_flag.Name = "cb_flag";
             this.cb_flag.Size = new System.Drawing.Size(143, 20);
             this.cb_flag.TabIndex = 6;
-            this.cb_flag.TextChanged += new System.EventHandler(this.Cb_flag_TextChanged);
             // 
             // cb_font
             // 
@@ -348,7 +345,6 @@
             this.cb_font.Name = "cb_font";
             this.cb_font.Size = new System.Drawing.Size(143, 20);
             this.cb_font.TabIndex = 6;
-            this.cb_font.TextChanged += new System.EventHandler(this.Cb_font_TextChanged);
             // 
             // l_boxname
             // 
@@ -361,74 +357,129 @@
             // 
             // btn_movedown
             // 
+            this.btn_movedown.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_movedown.BackgroundImage = global::CardEditor.Properties.Resources.down32x;
             this.btn_movedown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_movedown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_movedown.Location = new System.Drawing.Point(214, 9);
+            this.btn_movedown.Location = new System.Drawing.Point(217, 3);
             this.btn_movedown.Name = "btn_movedown";
             this.btn_movedown.Size = new System.Drawing.Size(32, 32);
             this.btn_movedown.TabIndex = 14;
-            this.btn_movedown.UseVisualStyleBackColor = true;
+            this.btn_movedown.UseVisualStyleBackColor = false;
             this.btn_movedown.Click += new System.EventHandler(this.btn_movedown_Click);
             // 
             // btn_moveup
             // 
+            this.btn_moveup.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_moveup.BackgroundImage = global::CardEditor.Properties.Resources.up32x;
             this.btn_moveup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_moveup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_moveup.Location = new System.Drawing.Point(176, 9);
+            this.btn_moveup.Location = new System.Drawing.Point(179, 3);
             this.btn_moveup.Name = "btn_moveup";
             this.btn_moveup.Size = new System.Drawing.Size(32, 32);
             this.btn_moveup.TabIndex = 15;
-            this.btn_moveup.UseVisualStyleBackColor = true;
+            this.btn_moveup.UseVisualStyleBackColor = false;
             this.btn_moveup.Click += new System.EventHandler(this.btn_moveup_Click);
             // 
             // btn_duplicate
             // 
+            this.btn_duplicate.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_duplicate.BackgroundImage = global::CardEditor.Properties.Resources.duplicate32x;
             this.btn_duplicate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_duplicate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_duplicate.Location = new System.Drawing.Point(101, 9);
+            this.btn_duplicate.Location = new System.Drawing.Point(104, 3);
             this.btn_duplicate.Name = "btn_duplicate";
             this.btn_duplicate.Size = new System.Drawing.Size(32, 32);
             this.btn_duplicate.TabIndex = 16;
             this.btn_duplicate.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.btn_duplicate.UseVisualStyleBackColor = true;
+            this.btn_duplicate.UseVisualStyleBackColor = false;
             this.btn_duplicate.Click += new System.EventHandler(this.btn_duplicate_Click);
             // 
             // btn_del
             // 
+            this.btn_del.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_del.BackgroundImage = global::CardEditor.Properties.Resources.del32x;
             this.btn_del.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_del.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_del.Location = new System.Drawing.Point(139, 9);
+            this.btn_del.Location = new System.Drawing.Point(142, 3);
             this.btn_del.Name = "btn_del";
             this.btn_del.Size = new System.Drawing.Size(32, 32);
             this.btn_del.TabIndex = 17;
             this.btn_del.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.btn_del.UseVisualStyleBackColor = true;
+            this.btn_del.UseVisualStyleBackColor = false;
             this.btn_del.Click += new System.EventHandler(this.btn_del_Click);
             // 
             // l_selectedline
             // 
             this.l_selectedline.AutoSize = true;
-            this.l_selectedline.Location = new System.Drawing.Point(12, 18);
+            this.l_selectedline.Location = new System.Drawing.Point(3, 8);
             this.l_selectedline.Name = "l_selectedline";
-            this.l_selectedline.Size = new System.Drawing.Size(23, 12);
+            this.l_selectedline.Size = new System.Drawing.Size(47, 12);
             this.l_selectedline.TabIndex = 18;
-            this.l_selectedline.Text = "行:";
+            this.l_selectedline.Text = "编辑行:";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel1.Controls.Add(this.btn_CancelEdit);
+            this.panel1.Controls.Add(this.btn_SaveEdit);
+            this.panel1.Controls.Add(this.btn_del);
+            this.panel1.Controls.Add(this.l_selectedline);
+            this.panel1.Controls.Add(this.btn_duplicate);
+            this.panel1.Controls.Add(this.btn_movedown);
+            this.panel1.Controls.Add(this.btn_moveup);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(252, 59);
+            this.panel1.TabIndex = 19;
+            // 
+            // btn_SaveEdit
+            // 
+            this.btn_SaveEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btn_SaveEdit.BackColor = System.Drawing.Color.PaleGreen;
+            this.btn_SaveEdit.FlatAppearance.BorderSize = 0;
+            this.btn_SaveEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_SaveEdit.Location = new System.Drawing.Point(0, 36);
+            this.btn_SaveEdit.Name = "btn_SaveEdit";
+            this.btn_SaveEdit.Size = new System.Drawing.Size(126, 23);
+            this.btn_SaveEdit.TabIndex = 19;
+            this.btn_SaveEdit.Text = "保存";
+            this.btn_SaveEdit.UseVisualStyleBackColor = false;
+            this.btn_SaveEdit.Click += new System.EventHandler(this.btn_SaveEdit_Click);
+            // 
+            // btn_CancelEdit
+            // 
+            this.btn_CancelEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_CancelEdit.BackColor = System.Drawing.Color.LightCoral;
+            this.btn_CancelEdit.FlatAppearance.BorderSize = 0;
+            this.btn_CancelEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_CancelEdit.Location = new System.Drawing.Point(126, 36);
+            this.btn_CancelEdit.Name = "btn_CancelEdit";
+            this.btn_CancelEdit.Size = new System.Drawing.Size(126, 23);
+            this.btn_CancelEdit.TabIndex = 19;
+            this.btn_CancelEdit.Text = "取消";
+            this.btn_CancelEdit.UseVisualStyleBackColor = false;
+            this.btn_CancelEdit.Click += new System.EventHandler(this.btn_CancelEdit_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.Control;
+            this.panel2.Controls.Add(this.groupBox1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 65);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(252, 430);
+            this.panel2.TabIndex = 20;
             // 
             // Inspector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(252, 495);
-            this.Controls.Add(this.l_selectedline);
-            this.Controls.Add(this.btn_movedown);
-            this.Controls.Add(this.btn_moveup);
-            this.Controls.Add(this.btn_duplicate);
-            this.Controls.Add(this.btn_del);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximumSize = new System.Drawing.Size(268, 534);
@@ -451,8 +502,10 @@
             this.gb_text.ResumeLayout(false);
             this.gb_text.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tb_fontSize)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -486,5 +539,9 @@
         private System.Windows.Forms.Button btn_duplicate;
         private System.Windows.Forms.Button btn_del;
         private System.Windows.Forms.Label l_selectedline;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btn_CancelEdit;
+        private System.Windows.Forms.Button btn_SaveEdit;
+        private System.Windows.Forms.Panel panel2;
     }
 }

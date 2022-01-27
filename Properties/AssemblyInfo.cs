@@ -11,7 +11,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("PopcornBoom")]
 [assembly: AssemblyProduct("CardEditor")]
-[assembly: AssemblyCopyright("Copyright © PopcornBoom2021")]
+[assembly: AssemblyCopyright("Copyright © PopcornBoom2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -33,6 +33,6 @@ using System.Runtime.InteropServices;
 //可以指定所有这些值，也可以使用“生成号”和“修订号”的默认值
 //通过使用 "*"，如下所示:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.2.*")]
+[assembly: AssemblyVersion("2.3.*")]
 //[assembly: AssemblyFileVersion("1.5.0.5")]
 [assembly: NeutralResourcesLanguage("")]
