@@ -32,16 +32,6 @@ namespace CardEditor
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.dgv_boxesdata = new System.Windows.Forms.DataGridView();
-            this.boxname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rectx1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.recty1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rectx2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.recty2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.font = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fontsize = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.color = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.flag = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pic = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.btn_loadbase = new System.Windows.Forms.Button();
             this.tb_boxname = new System.Windows.Forms.TextBox();
             this.l_boxname = new System.Windows.Forms.Label();
@@ -100,6 +90,17 @@ namespace CardEditor
             this.btn_choosepicfolder = new System.Windows.Forms.Button();
             this.btn_opensavefolder = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.boxname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rectx1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.recty1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rectx2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.recty2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.font = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fontsize = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.color = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.flag = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.pic = new System.Windows.Forms.DataGridViewComboBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_boxesdata)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pBmainview)).BeginInit();
@@ -155,89 +156,6 @@ namespace CardEditor
             this.dgv_boxesdata.TabIndex = 1;
             this.dgv_boxesdata.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_boxesdata_CellClick);
             this.dgv_boxesdata.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_boxesdata_CellEndEdit);
-            // 
-            // boxname
-            // 
-            this.boxname.HeaderText = "名称";
-            this.boxname.MinimumWidth = 8;
-            this.boxname.Name = "boxname";
-            this.boxname.Width = 70;
-            // 
-            // rectx1
-            // 
-            this.rectx1.HeaderText = "x1";
-            this.rectx1.MinimumWidth = 8;
-            this.rectx1.Name = "rectx1";
-            this.rectx1.Width = 50;
-            // 
-            // recty1
-            // 
-            this.recty1.HeaderText = "y1";
-            this.recty1.MinimumWidth = 8;
-            this.recty1.Name = "recty1";
-            this.recty1.Width = 50;
-            // 
-            // rectx2
-            // 
-            this.rectx2.HeaderText = "x2";
-            this.rectx2.MinimumWidth = 8;
-            this.rectx2.Name = "rectx2";
-            this.rectx2.Width = 50;
-            // 
-            // recty2
-            // 
-            this.recty2.HeaderText = "y2";
-            this.recty2.MinimumWidth = 8;
-            this.recty2.Name = "recty2";
-            this.recty2.Width = 50;
-            // 
-            // font
-            // 
-            this.font.HeaderText = "字体";
-            this.font.MinimumWidth = 8;
-            this.font.Name = "font";
-            this.font.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.font.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.font.Width = 50;
-            // 
-            // fontsize
-            // 
-            this.fontsize.HeaderText = "字体大小";
-            this.fontsize.MinimumWidth = 8;
-            this.fontsize.Name = "fontsize";
-            this.fontsize.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.fontsize.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.fontsize.Width = 70;
-            // 
-            // color
-            // 
-            this.color.HeaderText = "颜色";
-            this.color.MinimumWidth = 8;
-            this.color.Name = "color";
-            this.color.ReadOnly = true;
-            this.color.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.color.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.color.Width = 50;
-            // 
-            // flag
-            // 
-            this.flag.HeaderText = "对齐";
-            this.flag.MinimumWidth = 8;
-            this.flag.Name = "flag";
-            this.flag.Width = 40;
-            // 
-            // pic
-            // 
-            this.pic.HeaderText = "图片引用方式";
-            this.pic.Items.AddRange(new object[] {
-            "仅文字无图",
-            "从绝对路径",
-            "从相对路径"});
-            this.pic.MinimumWidth = 6;
-            this.pic.Name = "pic";
-            this.pic.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.pic.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.pic.Width = 110;
             // 
             // btn_loadbase
             // 
@@ -877,20 +795,16 @@ namespace CardEditor
             // 
             // cb_flag
             // 
+            this.cb_flag.DisplayMember = "Display";
             this.cb_flag.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_flag.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cb_flag.FormattingEnabled = true;
-            this.cb_flag.Items.AddRange(new object[] {
-            "居左0",
-            "居右1",
-            "竖左2",
-            "竖右3",
-            "整行4096"});
             this.cb_flag.Location = new System.Drawing.Point(57, 90);
             this.cb_flag.Margin = new System.Windows.Forms.Padding(4);
             this.cb_flag.Name = "cb_flag";
             this.cb_flag.Size = new System.Drawing.Size(189, 23);
             this.cb_flag.TabIndex = 6;
+            this.cb_flag.ValueMember = "Value";
             // 
             // label10
             // 
@@ -993,6 +907,111 @@ namespace CardEditor
             this.label17.Text = "此新版本框位置的确定方式由(原点加宽长确定框)改成了(两点确定框),虽打开旧框集合文件不会报错,但(x2,y2)的值还是原来的(宽,长)请手动改为(x1+原宽,x" +
     "1+原高)";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Flag";
+            this.dataGridViewTextBoxColumn1.HeaderText = "对齐";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 40;
+            // 
+            // boxname
+            // 
+            this.boxname.DataPropertyName = "Name";
+            this.boxname.HeaderText = "名称";
+            this.boxname.MinimumWidth = 8;
+            this.boxname.Name = "boxname";
+            this.boxname.Width = 70;
+            // 
+            // rectx1
+            // 
+            this.rectx1.DataPropertyName = "RectX1";
+            this.rectx1.HeaderText = "x1";
+            this.rectx1.MinimumWidth = 8;
+            this.rectx1.Name = "rectx1";
+            this.rectx1.Width = 50;
+            // 
+            // recty1
+            // 
+            this.recty1.DataPropertyName = "RectY1";
+            this.recty1.HeaderText = "y1";
+            this.recty1.MinimumWidth = 8;
+            this.recty1.Name = "recty1";
+            this.recty1.Width = 50;
+            // 
+            // rectx2
+            // 
+            this.rectx2.DataPropertyName = "RectX2";
+            this.rectx2.HeaderText = "x2";
+            this.rectx2.MinimumWidth = 8;
+            this.rectx2.Name = "rectx2";
+            this.rectx2.Width = 50;
+            // 
+            // recty2
+            // 
+            this.recty2.DataPropertyName = "RectY2";
+            this.recty2.HeaderText = "y2";
+            this.recty2.MinimumWidth = 8;
+            this.recty2.Name = "recty2";
+            this.recty2.Width = 50;
+            // 
+            // font
+            // 
+            this.font.DataPropertyName = "Font";
+            this.font.HeaderText = "字体";
+            this.font.MinimumWidth = 8;
+            this.font.Name = "font";
+            this.font.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.font.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.font.Width = 50;
+            // 
+            // fontsize
+            // 
+            this.fontsize.DataPropertyName = "FontSize";
+            this.fontsize.HeaderText = "字体大小";
+            this.fontsize.MinimumWidth = 8;
+            this.fontsize.Name = "fontsize";
+            this.fontsize.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.fontsize.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.fontsize.Width = 70;
+            // 
+            // color
+            // 
+            this.color.DataPropertyName = "Color";
+            this.color.HeaderText = "颜色";
+            this.color.MinimumWidth = 8;
+            this.color.Name = "color";
+            this.color.ReadOnly = true;
+            this.color.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.color.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.color.Width = 50;
+            // 
+            // flag
+            // 
+            this.flag.DataPropertyName = "Flag";
+            this.flag.HeaderText = "对齐";
+            this.flag.MinimumWidth = 8;
+            this.flag.Name = "flag";
+            this.flag.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.flag.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.flag.Width = 40;
+            this.flag.DisplayMember = "Display";
+            this.flag.ValueMember = "Value";
+            // 
+            // pic
+            // 
+            this.pic.DataPropertyName = "Pic";
+            this.pic.HeaderText = "图片引用方式";
+            this.pic.Items.AddRange(new object[] {
+            "仅文字无图",
+            "从绝对路径",
+            "从相对路径"});
+            this.pic.MinimumWidth = 6;
+            this.pic.Name = "pic";
+            this.pic.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.pic.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.pic.Width = 110;
             // 
             // Form1
             // 
@@ -1105,6 +1124,9 @@ namespace CardEditor
         private System.Windows.Forms.NumericUpDown nUD_recty2;
         private System.Windows.Forms.NumericUpDown nUD_rectx2;
         private System.Windows.Forms.NumericUpDown nUD_rectx1;
+        private System.Windows.Forms.Button btn_opensavefolder;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn boxname;
         private System.Windows.Forms.DataGridViewTextBoxColumn rectx1;
         private System.Windows.Forms.DataGridViewTextBoxColumn recty1;
@@ -1113,10 +1135,8 @@ namespace CardEditor
         private System.Windows.Forms.DataGridViewTextBoxColumn font;
         private System.Windows.Forms.DataGridViewTextBoxColumn fontsize;
         private System.Windows.Forms.DataGridViewTextBoxColumn color;
-        private System.Windows.Forms.DataGridViewTextBoxColumn flag;
+        private System.Windows.Forms.DataGridViewComboBoxColumn flag;
         private System.Windows.Forms.DataGridViewComboBoxColumn pic;
-        private System.Windows.Forms.Button btn_opensavefolder;
-        private System.Windows.Forms.Label label17;
     }
 }
 

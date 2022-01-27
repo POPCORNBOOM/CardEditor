@@ -15,6 +15,8 @@ namespace CardEditor
 {
     public partial class Form1 : Form
     {
+        private readonly BindingList<Box> boxes = new BindingList<Box>();
+
         //Stopwatch Stopwatch= new Stopwatch();//花里胡哨的的选择框alpha周期缓动（bushi
         public bool Isdrawing;
         public Image SourceImage;
@@ -47,6 +49,18 @@ namespace CardEditor
             }
             cb_font.SelectedIndex = 0;
             cb_picsrcfrom.SelectedIndex = 0;
+
+            dgv_boxesdata.DataSource = boxes;
+            dgv_boxesdata.Columns[nameof(Box.TextOnly)].Visible = false;
+
+            var wrappedFlags = Enum.GetValues(typeof(TextAlign)).Cast<TextAlign>()
+                .Select(ta => ta.WrapEnum()).Cast<object>().ToArray();
+            var flagCol = ((DataGridViewComboBoxColumn) dgv_boxesdata.Columns["flag"]);
+            flagCol.Items.AddRange(wrappedFlags);
+            flagCol.DisplayMember = nameof(EnumHelper.ValueWrapper<TextAlign>.Display);
+            flagCol.ValueMember = nameof(EnumHelper.ValueWrapper<TextAlign>.Value);
+            flagCol.DisplayIndex = 0;
+            cb_flag.Items.AddRange(wrappedFlags);
             cb_flag.SelectedIndex = 0;
             //dgv_boxesdata.Columns["font"].DataPropertyName
         }
