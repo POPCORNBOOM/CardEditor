@@ -549,7 +549,8 @@ namespace CardEditor
         //这个方法没啥必要，试试int.TryParse(string str,out int result)
         //返回值就是能否转化的bool，out出来的就是转化过的int
         //-- Hamster5295
-        public bool islegal(string validateString)
+
+        /*public bool islegal(string validateString)
         {
             try
             {
@@ -560,7 +561,7 @@ namespace CardEditor
             {
                 return false;
             }
-        }
+        }*/
 
 
         //直接保存序列化后的CardBox
@@ -601,6 +602,7 @@ namespace CardEditor
             {
                 if (dialog.FileName.EndsWith(".bs"))        //新版的*.tbs应该是直接转化的，这里适配*.bs
                 {
+                    boxes.Clear();      //修复依次打开多个BoxSet文件时绘制重叠的问题
                     dgv_boxesdata.Rows.Clear();
                     dgv_boxesdata.Refresh();
                     int readingline = 0;
