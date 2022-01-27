@@ -46,6 +46,7 @@ namespace CardEditor
             cb_flag.Text = CardBox.FlagToString(box.flag);
             cb_picsrcfrom.Text = CardBox.PictureSrcToString(box.pictureSrc);
             colorshow.BackColor = box.color;
+            l_selectedline.Text = "行:" + f.selectedIndex + 1;       //在属性面板中添加显示行，以免同名box发生混淆
         }
 
         private void BoxName_TextChanged(object sender, EventArgs e)
@@ -87,7 +88,7 @@ namespace CardEditor
 
         private void Inspector_FormClosed(object sender, FormClosedEventArgs e)
         {
-            f.isInspectorOn = false;        //NOTICE
+            f.isInspectorOn = false;
         }
 
         private void Cb_font_TextChanged(object sender, EventArgs e)
@@ -128,6 +129,8 @@ namespace CardEditor
             f.boxes[f.selectedIndex].pictureSrc = CardBox.ParsePictureSrc(cb_picsrcfrom.Text); RefreshV();
         }
 
+
+        //框的四个操作
         private void btn_duplicate_Click(object sender, EventArgs e)
         {
             f.boxes.Add(box);RefreshV();
@@ -136,6 +139,16 @@ namespace CardEditor
         private void btn_del_Click(object sender, EventArgs e)
         {
             f.boxes.Remove(box);RefreshV();
+            if (f.boxes.Count == 0)
+            {
+                f.isInspectorOn = false;
+                Dispose();
+            }
+            f.selectedIndex = 0;
+            UpdateData();
+            RefreshV();
+
+
         }
 
         private void btn_moveup_Click(object sender, EventArgs e)
@@ -145,6 +158,7 @@ namespace CardEditor
             f.boxes[f.selectedIndex - 1] = box;
             f.boxes[f.selectedIndex] = i;
             f.selectedIndex -= 1;
+            UpdateData();
             RefreshV();
         }
 
@@ -155,6 +169,7 @@ namespace CardEditor
             f.boxes[f.selectedIndex + 1] = box;
             f.boxes[f.selectedIndex] = i;
             f.selectedIndex += 1;
+            UpdateData();
             RefreshV();
         }
     }

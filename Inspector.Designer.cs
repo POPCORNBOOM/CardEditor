@@ -56,6 +56,7 @@
             this.btn_moveup = new System.Windows.Forms.Button();
             this.btn_duplicate = new System.Windows.Forms.Button();
             this.btn_del = new System.Windows.Forms.Button();
+            this.l_selectedline = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -408,11 +409,21 @@
             this.btn_del.UseVisualStyleBackColor = true;
             this.btn_del.Click += new System.EventHandler(this.btn_del_Click);
             // 
+            // l_selectedline
+            // 
+            this.l_selectedline.AutoSize = true;
+            this.l_selectedline.Location = new System.Drawing.Point(12, 18);
+            this.l_selectedline.Name = "l_selectedline";
+            this.l_selectedline.Size = new System.Drawing.Size(23, 12);
+            this.l_selectedline.TabIndex = 18;
+            this.l_selectedline.Text = "行:";
+            // 
             // Inspector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(252, 495);
+            this.Controls.Add(this.l_selectedline);
             this.Controls.Add(this.btn_movedown);
             this.Controls.Add(this.btn_moveup);
             this.Controls.Add(this.btn_duplicate);
@@ -441,6 +452,7 @@
             this.gb_text.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tb_fontSize)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -473,5 +485,6 @@
         private System.Windows.Forms.Button btn_moveup;
         private System.Windows.Forms.Button btn_duplicate;
         private System.Windows.Forms.Button btn_del;
+        private System.Windows.Forms.Label l_selectedline;
     }
 }
