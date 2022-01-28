@@ -70,13 +70,9 @@ namespace CardEditor
             dialog.Filter = "Png(*.png)|*.png";
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                FileStream fileStream = new FileStream(dialog.FileName, FileMode.Open, FileAccess.Read);
-                int byteLength = (int)fileStream.Length;
-                byte[] fileBytes = new byte[byteLength];
-                fileStream.Read(fileBytes, 0, byteLength);
-                fileStream.Close();//关闭文件流，解除锁定
+                using (var fileStream = new FileStream(dialog.FileName, FileMode.Open, FileAccess.Read))
+                    SourceImage = Image.FromStream(fileStream);
 
-                SourceImage = Image.FromStream(new MemoryStream(fileBytes));//流转Image类
                 //SourceImage = Image.FromFile(dialog.FileName);
                 RefreshView();
                 //标点底图右下角坐标
