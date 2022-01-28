@@ -128,44 +128,19 @@ namespace CardEditor
         //添加框函数
         private void btn_addbox_Click(object sender, EventArgs e)
         {
-            //原点坐标+长宽确定矩形，已改为两点坐标确定矩形
-            int index = dgv_boxesdata.Rows.Count;
-            int Flagint;//用于判断对齐
-            dgv_boxesdata.Rows.Add();
-            dgv_boxesdata.Rows[index].HeaderCell.Value = index + 1;
-            dgv_boxesdata.Rows[index].Cells["boxname"].Value = tb_boxname.Text;
-
-            dgv_boxesdata.Rows[index].Cells["rectx1"].Value = nUD_rectx1.Value;
-            dgv_boxesdata.Rows[index].Cells["recty1"].Value = nUD_recty1.Value;
-            dgv_boxesdata.Rows[index].Cells["rectx2"].Value = nUD_rectx2.Value;
-            dgv_boxesdata.Rows[index].Cells["recty2"].Value = nUD_recty2.Value;
-
-            dgv_boxesdata.Rows[index].Cells["font"].Value = cb_font.Text;
-            dgv_boxesdata.Rows[index].Cells["fontsize"].Value = nUD_fontsize.Value;
-            dgv_boxesdata.Rows[index].Cells["color"].Style.BackColor = colorshow.BackColor;
-
-            dgv_boxesdata.Rows[index].Cells["pic"].Value = cb_picsrcfrom.SelectedItem;
-            if (cb_picsrcfrom.Text != "仅文字无图")
+            boxes.Add(new Box
             {
-                dgv_boxesdata.Rows[index].Cells["font"].Style.BackColor = Color.Gray;
-                dgv_boxesdata.Rows[index].Cells["fontsize"].Style.BackColor = Color.Gray;
-                dgv_boxesdata.Rows[index].Cells["flag"].Style.BackColor = Color.Gray;
-                dgv_boxesdata.Rows[index].Cells["font"].Value = string.Empty;
-                dgv_boxesdata.Rows[index].Cells["fontsize"].Value = 1;
-                dgv_boxesdata.Rows[index].Cells["color"].Style.BackColor = Color.Black;
-
-            }
-            if (cb_flag.Text == "居左0")
-                Flagint = 0;
-            else if (cb_flag.Text == "居右1")
-                Flagint = 1;
-            else if (cb_flag.Text == "竖左2")
-                Flagint = 2;
-            else if (cb_flag.Text == "竖右3")
-                Flagint = 3;
-            else
-                Flagint = 4096;
-            dgv_boxesdata.Rows[index].Cells["flag"].Value = Flagint;
+                Name = tb_boxname.Text,
+                RectX1 = nUD_rectx1.Value,
+                RectY1 = nUD_recty1.Value,
+                RectX2 = nUD_rectx2.Value,
+                RectY2 = nUD_recty2.Value,
+                Font = cb_font.Text,
+                FontSize = nUD_fontsize.Value,
+                Color = colorshow.BackColor,
+                Pic = cb_picsrcfrom.SelectedItem.ToString(),
+                Flag = ((EnumHelper.ValueWrapper<TextAlign>) cb_flag.SelectedItem).Value
+            });
             RefreshView();
         }
 
