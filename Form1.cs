@@ -616,16 +616,10 @@ namespace CardEditor
         {
             if (dgv_boxesdata.CurrentRow == null|| dgv_boxesdata.CurrentRow.Index <= 0) return;
             int index = dgv_boxesdata.CurrentRow.Index;
-            DataGridViewRow dgvs = dgv_boxesdata.CurrentRow;
 
-            //dgv_boxesdata.Rows[dgv_boxesdata.CurrentRow.Index-1].Cells
             try
             {
-
-                DataGridViewRow dgvr = dgv_boxesdata.Rows[index - 1];//获取选中行的上一行
-                dgv_boxesdata.Rows.RemoveAt(index - 1);//删除原选中行的上一行
-                dgv_boxesdata.Rows.Insert((index), dgvr);//将选中行的上一行插入到选中行的后面
-
+                Helper.Swap(boxes, index - 1, index);
             }
             catch (Exception ex)
             {
@@ -651,16 +645,10 @@ namespace CardEditor
         {
             if (dgv_boxesdata.CurrentRow == null || dgv_boxesdata.CurrentRow.Index == dgv_boxesdata.RowCount-1) return;
             int index = dgv_boxesdata.CurrentRow.Index;
-            DataGridViewRow dgvs = dgv_boxesdata.CurrentRow;
 
-            //dgv_boxesdata.Rows[dgv_boxesdata.CurrentRow.Index-1].Cells
             try
             {
-
-                DataGridViewRow dgvr = dgv_boxesdata.Rows[index+1];//获取选中行的下一行
-                dgv_boxesdata.Rows.RemoveAt(index + 1);//删除原选中行的下一行
-                dgv_boxesdata.Rows.Insert((index), dgvr);//将选中行的上一行插入到选中行的后面
-
+                Helper.Swap(boxes, index + 1, index);
             }
             catch (Exception ex)
             {
@@ -704,23 +692,10 @@ namespace CardEditor
 
         private void btn_duplicate_Click(object sender, EventArgs e)
         {
-            if (dgv_boxesdata.CurrentRow == null) return;
-            dgv_boxesdata.Rows.Add();
-            int id=0;
-            int index = dgv_boxesdata.CurrentRow.Index;
-            foreach (DataGridViewCell cell in dgv_boxesdata.CurrentRow.Cells)
-            {
-                if(id==7)
-                    dgv_boxesdata.Rows[dgv_boxesdata.RowCount - 1].Cells[id].Style.BackColor = cell.Style.BackColor;
-                dgv_boxesdata.Rows[dgv_boxesdata.RowCount - 1].Cells[id].Value = cell.Value;
-                id++;
-            }
-            DataGridViewRow dgvs = dgv_boxesdata.CurrentRow;
             try
             {
-                DataGridViewRow dgvr = dgv_boxesdata.Rows[dgv_boxesdata.RowCount - 1];
-                dgv_boxesdata.Rows.RemoveAt(dgv_boxesdata.RowCount - 1);
-                dgv_boxesdata.Rows.Insert((index), dgvr);
+                var y = dgv_boxesdata.CurrentCellAddress.Y;
+                boxes.Insert(y, Helper.DeepCopy(boxes[y]));
             }
             catch (Exception ex)
             {
