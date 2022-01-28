@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 
 namespace CardEditor
 {
@@ -64,7 +65,8 @@ namespace CardEditor
         /// <param name="content">要绘制的内容：文本框的文字，图像的路径</param>
         /// <param name="target">要在其上绘制的 Image</param>
         /// <param name="drawBack">是否显示框区域</param>
-        public void Draw(string content, Image target, bool drawBack)
+        /// <param name="isPreview"></param>
+        public void Draw(string content, Image target, bool drawBack, bool isPreview = true)
         {
             var font = new Font(Font ?? "黑体", (float) FontSize);
             var sf = new StringFormat((StringFormatFlags) Flag);
@@ -80,10 +82,16 @@ namespace CardEditor
 
             if (!TextOnly)
             {
-                g.DrawImage(Properties.Resources.defaultimg1, rect);
+                var path = "从绝对路径".Equals(Pic) ? content : Path.Combine(Properties.Settings.Default.srcpicdir, content);
+                var bitmap = isPreview ? Properties.Resources.defaultimg1 : Image.FromFile(path);
+                g.DrawImage(bitmap, rect);
             }
 
-            g.DrawString(content, font, fontBrush, rect, sf);
+            if (TextOnly || isPreview)
+            {
+                g.DrawString(content, font, fontBrush, rect, sf);
+            }
+
             g.Dispose();
         }
     }

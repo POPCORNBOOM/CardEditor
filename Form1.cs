@@ -83,37 +83,20 @@ namespace CardEditor
         //刷新底图预览（&一行样例）函数
         private void RefreshView()
         {
-            int rx1,rx2,ry1,ry2;
             Bitmap TempImg = new Bitmap(SourceImage);
-            tb_shouldlike.Text = " ";
-            foreach (DataGridViewRow row in dgv_boxesdata.Rows)
-            {
-                tb_shouldlike.Text += "'" +row.Cells["boxname"].Value.ToString() + "',";
-                rx1 = int.Parse(row.Cells["rectx1"].Value.ToString());
-                rx2 = int.Parse(row.Cells["rectx2"].Value.ToString());
-                ry1 = int.Parse(row.Cells["recty1"].Value.ToString());
-                ry2 = int.Parse(row.Cells["recty2"].Value.ToString());
-                if (row.Cells["pic"].Value.ToString() == "仅文字无图")
-                {
-                    
-                    string tfontname = "黑体";//默认字体
-                    if (row.Cells["font"].Value != null)//判断防止引用空报错
-                        tfontname = row.Cells["font"].Value.ToString();
-                    DrawPic("(" + row.Cells["boxname"].Value + ")the quick brown fox jumps over a lazy dog.the quick brown fox jumps over a lazy dog.the quick brown fox jumps over a lazy dog.", new Rectangle(Math.Min(rx1, rx2), Math.Min(ry1, ry2), Math.Abs(rx2-rx1), Math.Abs(ry2-ry1)), tfontname, float.Parse(row.Cells["fontsize"].Value.ToString()), TempImg, row.Cells["color"].Style.BackColor, true, int.Parse(row.Cells["flag"].Value.ToString()), null);
 
-                }
-                else
-                {
-                    //针对图片框显示预览图（品红/绿）
-                    if(IsShowBack) DrawPic(string.Empty, new Rectangle(Math.Min(rx1, rx2), Math.Min(ry1, ry2), Math.Abs(rx2 - rx1), Math.Abs(ry2 - ry1)), row.Cells["font"].Value.ToString(), float.Parse(row.Cells["fontsize"].Value.ToString()), TempImg, row.Cells["color"].Style.BackColor, false, int.Parse(row.Cells["flag"].Value.ToString()), Properties.Resources.defaultimg1);
-                    else DrawPic(string.Empty, new Rectangle(Math.Min(rx1, rx2), Math.Min(ry1, ry2), Math.Abs(rx2 - rx1), Math.Abs(ry2 - ry1)), row.Cells["font"].Value.ToString(), float.Parse(row.Cells["fontsize"].Value.ToString()), TempImg, row.Cells["color"].Style.BackColor, false, int.Parse(row.Cells["flag"].Value.ToString()),null);
+            tb_shouldlike.Text = string.Join(",", boxes.Select(it => $"'{it.Name}'").ToArray()); //刷新一行预览
 
-                }
-
-            }
-            tb_shouldlike.Text = tb_shouldlike.Text.Substring(0, tb_shouldlike.Text.Length - 1);//刷新一行预览
+            foreach (var box in boxes)
+                box.Draw(
+                    PlaceHolderText(box.Name),
+                    TempImg, IsShowBack);
             pBmainview.Image = TempImg;
-            //TempImg.Dispose();
+        }
+
+        private static string PlaceHolderText(string name)
+        {
+            return $"({name})the quick brown fox jumps over a lazy dog.the quick brown fox jumps over a lazy dog.the quick brown fox jumps over a lazy dog.";
         }
 
 
@@ -134,23 +117,6 @@ namespace CardEditor
                 Flag = ((EnumHelper.ValueWrapper<TextAlign>) cb_flag.SelectedItem).Value
             });
             RefreshView();
-        }
-
-        private void DrawPic(string text,Rectangle rectangle,string fontname,float fontsize,Image drawimage,Color color,bool drawback,int sfflag,Image img)
-        {
-            if (fontname == string.Empty) fontname = "黑体";
-            Font font = new Font(fontname,fontsize);
-            StringFormat sf = new StringFormat((StringFormatFlags)sfflag);
-            Brush fontbrush = new SolidBrush(color);
-            Brush backbrush = new SolidBrush(Color.FromArgb(100,255-color.R,255-color.G,255-color.B));
-            Graphics g = Graphics.FromImage(drawimage);
-            if (drawback&&IsShowBack)
-                g.FillRectangle(backbrush,rectangle);
-            if(img != null)
-                g.DrawImage(img, rectangle);
-            g.DrawString(text, font, fontbrush, rectangle, sf);
-            g.Dispose();
-
         }
 
         private void dgv_boxesdata_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -249,47 +215,17 @@ namespace CardEditor
                     //if (drawlist.Count == dgv_boxesdata.Rows.Count)
                     //{
                     BoxId = 0;
-                    foreach (DataGridViewRow row in dgv_boxesdata.Rows)
+
+                    if (drawlist.Count < boxes.Count)
                     {
-                        //原点坐标+长宽确定矩形，已改为两点坐标确定矩形
-                        rx1 = int.Parse(row.Cells["rectx1"].Value.ToString());
-                        rx2 = int.Parse(row.Cells["rectx2"].Value.ToString());
-                        ry1 = int.Parse(row.Cells["recty1"].Value.ToString());
-                        ry2 = int.Parse(row.Cells["recty2"].Value.ToString());
-
-                        BoxId++;
-                        myRectangle = new Rectangle(Math.Min(rx1, rx2), Math.Min(ry1, ry2), Math.Abs(rx2 - rx1), Math.Abs(ry2 - ry1));
-                        FontName = row.Cells["font"].Value.ToString();
-                        FontSize = float.Parse(row.Cells["fontsize"].Value.ToString());
-                        DrawColor = row.Cells["color"].Style.BackColor;
-                        flag = int.Parse(row.Cells["flag"].Value.ToString());
-                        text = string.Empty;
-                        if (row.Cells["pic"].Value.ToString() == "仅文字无图")
-                        {
-                            Mode = row.Cells["pic"].Value.ToString();
-                            PicSrc = "no source";
-                            text = drawlist[row.Index];
-                            image = null;
-                        }
-                        else if (row.Cells["pic"].Value.ToString() == "从绝对路径")
-                        {
-                            Mode = row.Cells["pic"].Value.ToString();
-                            PicSrc = drawlist[row.Index];
-                            image = Image.FromFile(PicSrc);
-                        }
-                        else
-                        {
-                            if (!Directory.Exists(e))
-                                e += "---<!'图片引用方式'选用'从相对路径'模式时不应不填写相对目录>";
-
-                            Mode = row.Cells["pic"].Value.ToString();
-                            PicSrc = Properties.Settings.Default.srcpicdir + drawlist[row.Index];
-                            image = Image.FromFile(PicSrc);
-                        }
-
-                        DrawPic(text, myRectangle, FontName, FontSize, TempImg, DrawColor, false, flag, image);
-
-
+                        // TODO: 抛出自定义异常
+                        MessageBox.Show($"框数和第{LineId}行分隔字段数不同，跳过");
+                        break;
+                    }
+                    for (var i = 0; i < boxes.Count; i++)
+                    {
+                        BoxId = i;
+                        boxes[i].Draw(drawlist[i], TempImg, false, false);
                     }
                     TempImg.Save(Properties.Settings.Default.savefolder + drawlist[0] + ".png");
                     btn_startdraw.Enabled = true;
