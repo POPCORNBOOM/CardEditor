@@ -1,4 +1,6 @@
 ﻿
+using System.Drawing;
+
 namespace CardEditor
 {
     partial class Form1
@@ -156,6 +158,7 @@ namespace CardEditor
             this.dgv_boxesdata.TabIndex = 1;
             this.dgv_boxesdata.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_boxesdata_CellClick);
             this.dgv_boxesdata.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_boxesdata_CellEndEdit);
+            this.dgv_boxesdata.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dgv_boxesdata_RowPrePaint);
             // 
             // btn_loadbase
             // 
@@ -979,6 +982,8 @@ namespace CardEditor
             // color
             // 
             this.color.DataPropertyName = "Color";
+            this.color.DefaultCellStyle.ForeColor = Color.Transparent;
+            this.color.DefaultCellStyle.SelectionForeColor = Color.Transparent;
             this.color.HeaderText = "颜色";
             this.color.MinimumWidth = 8;
             this.color.Name = "color";

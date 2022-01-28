@@ -360,7 +360,7 @@ namespace CardEditor
         {
             if (dgv_boxesdata.RowCount == 0)
                 return;
-            if(dgv_boxesdata.CurrentCell.ColumnIndex == 7)
+            if(dgv_boxesdata.CurrentCell.OwningColumn.Name == color.Name)
             {
                 ColorDialog colorDia = new ColorDialog();
 
@@ -368,8 +368,8 @@ namespace CardEditor
                 {
                     //获取所选择的颜色
                     Color colorChoosed = colorDia.Color;
-                    //改变panel的背景色
-                    dgv_boxesdata.CurrentCell.Style.BackColor = colorChoosed;
+                    //改变 Box.Color
+                    (dgv_boxesdata.CurrentRow.DataBoundItem as Box).Color = colorChoosed;
                     RefreshView();
                 }
 
@@ -545,6 +545,15 @@ namespace CardEditor
         private void btn_opensavefolder_Click(object sender, EventArgs e)
         {
             Process.Start(Properties.Settings.Default.savefolder);
+        }
+
+        private void dgv_boxesdata_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            // 自动把 Box.Color 应用到单元格
+            var index = e.RowIndex;
+            var targetStyle = dgv_boxesdata.Rows[index].Cells[color.Name].Style;
+            targetStyle.BackColor = boxes[index].Color;
+            targetStyle.SelectionBackColor = boxes[index].Color;
         }
 
         private void btn_movedown_Click(object sender, EventArgs e)
