@@ -499,13 +499,11 @@ namespace CardEditor
             }
             if (sfd.ShowDialog() == DialogResult.OK)
             {
-                string filename = sfd.FileName.ToString();
-                StreamWriter sw = new StreamWriter(filename);
-                foreach (DataGridViewRow row in dgv_boxesdata.Rows)
-                {
-                    sw.WriteLine(row.Cells["boxname"].Value + ","+ row.Cells["rectx1"].Value + "," + row.Cells["recty1"].Value + "," + row.Cells["rectx2"].Value + "," + row.Cells["recty2"].Value + "," + row.Cells["font"].Value + "," + row.Cells["fontsize"].Value + "," + row.Cells["color"].Style.BackColor.ToArgb().ToString("X8") + "," + row.Cells["flag"].Value +","+row.Cells["pic"].Value);
-                }
-                sw.Close();//关闭
+                var filename = sfd.FileName;
+                using (var sw = new StreamWriter(filename))
+                    foreach (var box in boxes)
+                        sw.WriteLine(box.Serialize());
+
                 MessageBox.Show("保存成功");
             }
         }
@@ -522,42 +520,18 @@ namespace CardEditor
                 dgv_boxesdata.Refresh();
                 int readingline = 0;
                 string filePath = dialog.FileName;
-                foreach (string str in System.IO.File.ReadAllLines(filePath))
+                boxes.Clear();
+                foreach (var box in File.ReadAllLines(filePath).Select(Box.Parse))
                 {
                     readingline++;
-                    List<string> textboxrow = new List<string>(str.Split(','));
-
-                    if (textboxrow.Count == 10)
+                    if (box is null)
                     {
-                        dgv_boxesdata.Rows.Add();
-                        dgv_boxesdata.Rows[readingline - 1].Cells["boxname"].Value = textboxrow[0];
-                        dgv_boxesdata.Rows[readingline - 1].Cells["rectx1"].Value = textboxrow[1];
-                        dgv_boxesdata.Rows[readingline - 1].Cells["recty1"].Value = textboxrow[2];
-                        dgv_boxesdata.Rows[readingline - 1].Cells["rectx2"].Value = textboxrow[3];
-                        dgv_boxesdata.Rows[readingline - 1].Cells["recty2"].Value = textboxrow[4];
-                        dgv_boxesdata.Rows[readingline - 1].Cells["font"].Value = textboxrow[5];
-                        dgv_boxesdata.Rows[readingline - 1].Cells["fontsize"].Value = textboxrow[6];
-                        dgv_boxesdata.Rows[readingline - 1].Cells["color"].Style.BackColor = ColorTranslator.FromHtml("#" + textboxrow[7]);
-                        dgv_boxesdata.Rows[readingline - 1].Cells["flag"].Value = textboxrow[8];
-                        dgv_boxesdata.Rows[readingline - 1].Cells["pic"].Value = textboxrow[9];
-                        if (textboxrow[9] != "仅文字无图")
-                        {
-                            dgv_boxesdata.Rows[readingline - 1].Cells["font"].Style.BackColor = Color.Gray;
-                            dgv_boxesdata.Rows[readingline - 1].Cells["fontsize"].Style.BackColor = Color.Gray;
-                            dgv_boxesdata.Rows[readingline - 1].Cells["flag"].Style.BackColor = Color.Gray;
-
-                        }
-
+                        MessageBox.Show("载入错误:行" + readingline);
                     }
                     else
                     {
-
-                        MessageBox.Show("载入错误:行" + readingline);
-                        break;
+                        boxes.Add(box);
                     }
-
-                    
-
                 }
                 dgv_boxesdata.Refresh();
                 RefreshView();
