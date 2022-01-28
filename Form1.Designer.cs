@@ -995,7 +995,7 @@ namespace CardEditor
             this.flag.Name = "flag";
             this.flag.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.flag.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.flag.Width = 40;
+            this.flag.Width = 60;
             this.flag.DisplayMember = "Display";
             this.flag.ValueMember = "Value";
             // 

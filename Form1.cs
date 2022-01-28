@@ -57,12 +57,8 @@ namespace CardEditor
                 .Select(ta => ta.WrapEnum()).Cast<object>().ToArray();
             var flagCol = ((DataGridViewComboBoxColumn) dgv_boxesdata.Columns["flag"]);
             flagCol.Items.AddRange(wrappedFlags);
-            flagCol.DisplayMember = nameof(EnumHelper.ValueWrapper<TextAlign>.Display);
-            flagCol.ValueMember = nameof(EnumHelper.ValueWrapper<TextAlign>.Value);
-            flagCol.DisplayIndex = 0;
             cb_flag.Items.AddRange(wrappedFlags);
             cb_flag.SelectedIndex = 0;
-            //dgv_boxesdata.Columns["font"].DataPropertyName
         }
 
         private void btn_loadbase_Click(object sender, EventArgs e)
