@@ -326,7 +326,8 @@ namespace CardEditor
                         FontName = row.Cells["font"].Value.ToString();
                         FontSize = float.Parse(row.Cells["fontsize"].Value.ToString());
                         DrawColor = row.Cells["color"].Style.BackColor;
-                        flag = int.Parse(row.Cells["flag"].Value.ToString());
+                        flag = (int)CardBox.ParseFlag(row.Cells["flag"].Value.ToString());
+                        //flag = int.Parse(row.Cells["flag"].Value.ToString());
                         text = string.Empty;
                         if (row.Cells["pic"].Value.ToString() == "仅文字无图")
                         {
