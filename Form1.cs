@@ -203,7 +203,8 @@ namespace CardEditor
             Graphics g = Graphics.FromImage(drawimage);
             if (text.StartsWith("<html") && text.EndsWith("</html>"))      //判断参数是否具有html特征,StartsWith("<html") 是为了允许设置全局属性
             {             
-                TheArtOfDev.HtmlRenderer.WinForms.HtmlRender.Render(g, text, new PointF(rectangle.X, rectangle.Y), new SizeF(rectangle.Width,rectangle.Height));
+                //TheArtOfDev.HtmlRenderer.WinForms.HtmlRender.Render(g, text, new PointF(rectangle.X, rectangle.Y), new SizeF(rectangle.Width,rectangle.Height));
+                TheArtOfDev.HtmlRenderer.WinForms.HtmlRender.Render(g, text,rectangle.X, rectangle.Y,rectangle.Width);
             }
             else           //否则当普通文字处理
             {
