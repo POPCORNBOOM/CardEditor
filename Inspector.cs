@@ -135,7 +135,9 @@ namespace CardEditor
         //框的四个操作
         private void btn_duplicate_Click(object sender, EventArgs e)
         {
-            f.boxes.Add(box);RefreshV();
+            CardBox c = box.Clone();
+            f.boxes.Add(c);RefreshV();
+
         }
 
         private void btn_del_Click(object sender, EventArgs e)

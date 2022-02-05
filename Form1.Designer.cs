@@ -816,8 +816,9 @@ namespace CardEditor
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(41, 12);
             this.label10.TabIndex = 11;
-            this.label10.Text = "v2.3";
+            this.label10.Text = "v2.4a";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label10.Click += new System.EventHandler(this.debugfunction);
             // 
             // label8
             // 

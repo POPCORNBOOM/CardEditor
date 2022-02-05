@@ -1,7 +1,9 @@
-﻿using System;
+﻿using NPOI.SS.UserModel;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
@@ -198,17 +200,25 @@ namespace CardEditor
 
         private void DrawPic(string text, Rectangle rectangle, string fontname, float fontsize, Image drawimage, Color color, bool drawback, int sfflag, Image img)
         {
-            if (fontname == string.Empty) fontname = "黑体";
-            Font font = new Font(fontname, fontsize);
-            StringFormat sf = new StringFormat((StringFormatFlags)sfflag);
-            Brush fontbrush = new SolidBrush(color);
-            Brush backbrush = new SolidBrush(Color.FromArgb(100, 255 - color.R, 255 - color.G, 255 - color.B));
             Graphics g = Graphics.FromImage(drawimage);
-            if (drawback && IsShowBack)
-                g.FillRectangle(backbrush, rectangle);
-            if (img != null)
-                g.DrawImage(img, rectangle);
-            g.DrawString(text, font, fontbrush, rectangle, sf);
+            if (text.StartsWith("<html") && text.EndsWith("</html>"))      //判断参数是否具有html特征,StartsWith("<html") 是为了允许设置全局属性
+            {             
+                TheArtOfDev.HtmlRenderer.WinForms.HtmlRender.Render(g, text, new PointF(rectangle.X, rectangle.Y), new SizeF(rectangle.Width,rectangle.Height));
+            }
+            else           //否则当普通文字处理
+            {
+                if (fontname == string.Empty) fontname = "黑体";
+                Font font = new Font(fontname, fontsize);
+                StringFormat sf = new StringFormat((StringFormatFlags)sfflag);
+                Brush fontbrush = new SolidBrush(color);
+                Brush backbrush = new SolidBrush(Color.FromArgb(100, 255 - color.R, 255 - color.G, 255 - color.B));
+                if (drawback && IsShowBack)
+                    g.FillRectangle(backbrush, rectangle);
+                if (img != null)
+                    g.DrawImage(img, rectangle);
+                g.DrawString(text, font, fontbrush, rectangle, sf);
+            }
+               
             g.Dispose();
 
         }
@@ -258,7 +268,8 @@ namespace CardEditor
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Multiselect = false;//该值确定是否可以选择多个文件
             dialog.Title = "请选择文件";
-            dialog.Filter = "有逗号分隔的文本文档(*.txt)|*.txt|逗号分隔文件(*.csv)|*.csv";
+            //dialog.Filter = "有逗号分隔的文本文档(*.txt)|*.txt|逗号分隔文件(*.csv)|*.csv";
+            dialog.Filter = "Microsoft Excel 文件,Microsoft Excel 97-2003 文件(*.xlsx,*.xls)|*.xlsx;*.xls";         //规范参数文件，只能读取表格文件
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 string filePath = dialog.FileName;
@@ -287,7 +298,8 @@ namespace CardEditor
             int BoxId = 0;
             string Mode = string.Empty;
             string PicSrc = string.Empty;
-            List<string> drawlist = null;
+            //List<string> drawlist = null;
+            int rowcellcount = 0;
             string text = string.Empty;
             string FontName = string.Empty;
             float FontSize = 0;
@@ -295,51 +307,75 @@ namespace CardEditor
             int flag = 0;
             Rectangle myRectangle = new Rectangle(0, 0, 0, 0);
             Image image;
+
             string e = Properties.Settings.Default.srcpicdir;
-            if (!File.Exists(Properties.Settings.Default.inputtxtdir))
+
+
+            if (!File.Exists(Properties.Settings.Default.inputtxtdir))      //判断是否存在参数文件
             {
                 MessageBox.Show("没有文件输入!");
                 btn_startdraw.Enabled = true;
                 return;
             }
+
+
             try
             {
-                foreach (string str in File.ReadAllLines(Properties.Settings.Default.inputtxtdir, Encoding.UTF8))
-                {
-                    int rx1, rx2, ry1, ry2;
-                    LineId++;
+                IWorkbook workbook = WorkbookFactory.Create(Properties.Settings.Default.inputtxtdir);
+                ISheet sheet = workbook.GetSheetAt(0);//获取第一个工作薄
+                //sheet.row
+
+                for (int i = 0; i <= sheet.LastRowNum; i++)
+                {                    
                     Bitmap TempImg = new Bitmap(SourceImage);
-                    drawlist = new List<string>(str.Split(','));
-                    //if (drawlist.Count == dgv_boxesdata.Rows.Count)
-                    //{
+                    IRow e_row = (IRow)sheet.GetRow(i);
+                    rowcellcount = e_row.Cells.Count;
+                    //LineId++;
+
+                    int rx1, rx2, ry1, ry2;
+                    //drawlist = new List<string>(str.Split(','));
+
                     BoxId = 0;
-                    foreach (DataGridViewRow row in dgv_boxesdata.Rows)
+
+                    foreach (DataGridViewRow row in dgv_boxesdata.Rows)     //遍历所有框
                     {
+                        BoxId++;
+
                         //原点坐标+长宽确定矩形，已改为两点坐标确定矩形
                         rx1 = int.Parse(row.Cells["rectx1"].Value.ToString());
                         rx2 = int.Parse(row.Cells["rectx2"].Value.ToString());
                         ry1 = int.Parse(row.Cells["recty1"].Value.ToString());
                         ry2 = int.Parse(row.Cells["recty2"].Value.ToString());
 
-                        BoxId++;
                         myRectangle = new Rectangle(Math.Min(rx1, rx2), Math.Min(ry1, ry2), Math.Abs(rx2 - rx1), Math.Abs(ry2 - ry1));
                         FontName = row.Cells["font"].Value.ToString();
                         FontSize = float.Parse(row.Cells["fontsize"].Value.ToString());
                         DrawColor = row.Cells["color"].Style.BackColor;
                         flag = (int)CardBox.ParseFlag(row.Cells["flag"].Value.ToString());
                         //flag = int.Parse(row.Cells["flag"].Value.ToString());
+
+                        /*if (drawlist[BoxId - 1].StartsWith("<html>") && drawlist[BoxId - 1].EndsWith("</html>"))        //判断参数是否具有html特征
+                        {
+                            Graphics g = Graphics.FromImage(TempImg);
+                            TheArtOfDev.HtmlRenderer.WinForms.HtmlRender.Render(g, drawlist[BoxId - 1], Math.Min(rx1, rx2), Math.Min(ry1, ry2), Math.Abs(rx2 - rx1));
+                        }
+                        else
+                        {*/
                         text = string.Empty;
+                        e_row.Cells[BoxId - 1].SetCellType(CellType.String);
                         if (row.Cells["pic"].Value.ToString() == "仅文字无图")
                         {
                             Mode = row.Cells["pic"].Value.ToString();
                             PicSrc = "no source";
-                            text = drawlist[row.Index];
+                            //text = drawlist[BoxId - 1];
+                            text = e_row.Cells[BoxId - 1].StringCellValue;
                             image = null;
                         }
                         else if (row.Cells["pic"].Value.ToString() == "从绝对路径")
                         {
                             Mode = row.Cells["pic"].Value.ToString();
-                            PicSrc = drawlist[row.Index];
+                            //PicSrc = drawlist[BoxId - 1];
+                            PicSrc = e_row.Cells[BoxId - 1].StringCellValue;
                             image = Image.FromFile(PicSrc);
                         }
                         else
@@ -348,31 +384,37 @@ namespace CardEditor
                                 e += "---<!'图片引用方式'选用'从相对路径'模式时不应不填写相对目录>";
 
                             Mode = row.Cells["pic"].Value.ToString();
-                            PicSrc = Properties.Settings.Default.srcpicdir + drawlist[row.Index];
+                            //PicSrc = Properties.Settings.Default.srcpicdir + drawlist[BoxId - 1];
+                            PicSrc = Properties.Settings.Default.srcpicdir + e_row.Cells[BoxId - 1].StringCellValue;
                             image = Image.FromFile(PicSrc);
                         }
 
                         DrawPic(text, myRectangle, FontName, FontSize, TempImg, DrawColor, false, flag, image);
 
+                        //}
+
 
                     }
-                    TempImg.Save(Properties.Settings.Default.savefolder + drawlist[0] + ".png");
+                    TempImg.Save(Properties.Settings.Default.savefolder + i + ".png");
                     btn_startdraw.Enabled = true;
 
-
-
                 }
-
+                //foreach (string str in File.ReadAllLines(Properties.Settings.Default.inputtxtdir, Encoding.UTF8))       //遍历参数文件行
 
             }
+
+
+
+
+
 
             catch (Exception ex)
             {
                 string a = dgv_boxesdata.Rows.Count.ToString();
-                string b = drawlist.Count.ToString();
+                string b = rowcellcount.ToString();
                 string c = Properties.Settings.Default.inputtxtdir;
                 string d = PicSrc;
-                if (dgv_boxesdata.Rows.Count != drawlist.Count)
+                if (dgv_boxesdata.Rows.Count != rowcellcount)
                 {
                     a += "---<!框数和分隔字段数不同>";
                     b += "---<!框数和分隔字段数不同>";
@@ -834,6 +876,22 @@ namespace CardEditor
 
         private void Dgv_boxesdata_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
+        }
+
+        private void debugfunction(object sender, EventArgs e)
+        {
+            //Bitmap TempImg = new Bitmap(SourceImage);
+            //Image image = TheArtOfDev.HtmlRenderer.WinForms.HtmlRender.RenderToImage("<p><h1>Hello World</h1>This is html rendered text</p>",100,100,Color.FromArgb(0,0,0,0));
+            //DrawPic("", new Rectangle(0, 0, 100, 100), "null", 1, TempImg, Color.AliceBlue, false, 0, image);
+            //TempImg.Save("a.png", ImageFormat.Png);
+            //Image image2 = (Image)SourceImage.Clone();
+            //image2.Save("ipre.png", ImageFormat.Png);
+            //string html = "<body style='font-size:48px;'><p><b>战吼：</b><span style='color:#E53333;'>立即</span>更新一条视频</p><p><b>亡语：</b>对你的肝造成 <strong><span style='font-size:56px;'>3</span></strong> 点伤害</p></body>";
+            //Graphics g = Graphics.FromImage(TempImg);
+            //TheArtOfDev.HtmlRenderer.WinForms.HtmlRender.Render(g,html, (float)dud.Value, (float)debugud.Value, 710);
+            //TheArtOfDev.HtmlRenderer.WinForms.HtmlRender.RenderToImage(TempImg,html , new PointF((float)dud.Value, (float)debugud.Value));
+            //pBmainview.Image = TempImg;
+            //TempImg.Save("image.png", ImageFormat.Png);
         }
 
         private void btn_choosepicfolder_Click(object sender, EventArgs e)
