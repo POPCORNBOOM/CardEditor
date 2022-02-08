@@ -326,7 +326,7 @@ namespace CardEditor
                 ISheet sheet = workbook.GetSheetAt(0);//获取第一个工作薄
                 //sheet.row
 
-                for (int i = 0; i <= sheet.LastRowNum; i++)
+                for (int i = 0; i < sheet.LastRowNum; i++)
                 {                    
                     Bitmap TempImg = new Bitmap(SourceImage);
                     IRow e_row = (IRow)sheet.GetRow(i);
@@ -397,11 +397,11 @@ namespace CardEditor
 
                     }
                     TempImg.Save(Properties.Settings.Default.savefolder + i + ".png");
-                    btn_startdraw.Enabled = true;
+                    
 
                 }
                 //foreach (string str in File.ReadAllLines(Properties.Settings.Default.inputtxtdir, Encoding.UTF8))       //遍历参数文件行
-
+            btn_startdraw.Enabled = true;
             }
 
 
