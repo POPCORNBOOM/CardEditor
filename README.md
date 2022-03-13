@@ -4,7 +4,7 @@
 #### 注
 - 源代码是最新的v2.4b编译
 > 最后版本v2.4.81.42已发布，会提供bug修复，但再开发新功能
-> 新的开发计划：EZCard正在筹划中 详情见：
+> 新的开发计划：EZCard正在筹划中 详情见：[Project EZCard](https://github.com/POPCORNBOOM/CardEditor/blob/main/Project%20EZCard.md)
 
 ## 介绍
 一款专为桌游设计师开发的批处理数值填入卡牌生成器
