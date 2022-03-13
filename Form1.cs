@@ -9,6 +9,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using TheArtOfDev.HtmlRenderer.WinForms;
 
 
 namespace CardEditor
@@ -23,10 +24,11 @@ namespace CardEditor
         private Inspector inspector = new Inspector();
 
         //Stopwatch Stopwatch= new Stopwatch();//花里胡哨的的选择框alpha周期缓动（bushi
-        public bool Isdrawing;
+        private bool Isdrawing;
         public Image SourceImage;
         //public bool IsFirst;//换拖动选取了
-        public bool IsShowBack;
+        private bool IsShowBack;
+        private bool IsNameWithNum;
         private System.Drawing.Text.InstalledFontCollection ObjFont = new System.Drawing.Text.InstalledFontCollection();
         int Last_X, Last_Y = 0;//用于存储光标在预览中映射的最终坐标
         int Down_X, Down_Y, Up_X, Up_Y = 0;//存储鼠标在预览中点击和抬起时映射的坐标
@@ -51,9 +53,11 @@ namespace CardEditor
 
             //IsFirst = true;
 
+
             //读取系统字库初始化字体选择下拉框
             foreach (System.Drawing.FontFamily i in ObjFont.Families)
             {
+                HtmlRender.AddFontFamily(i);
                 cb_font.Items.Add(i.Name.ToString());
             }
             cb_font.SelectedIndex = 0;
@@ -204,7 +208,7 @@ namespace CardEditor
             if (text.StartsWith("<html") && text.EndsWith("</html>"))      //判断参数是否具有html特征,StartsWith("<html") 是为了允许设置全局属性
             {             
                 //TheArtOfDev.HtmlRenderer.WinForms.HtmlRender.Render(g, text, new PointF(rectangle.X, rectangle.Y), new SizeF(rectangle.Width,rectangle.Height));
-                TheArtOfDev.HtmlRenderer.WinForms.HtmlRender.Render(g, text,rectangle.X, rectangle.Y,rectangle.Width);
+                HtmlRender.RenderGdiPlus(g, text,rectangle.X, rectangle.Y,rectangle.Width);
             }
             else           //否则当普通文字处理
             {
@@ -285,6 +289,8 @@ namespace CardEditor
         //开始绘制线程函数
         private void btn_startdraw_Click(object sender, EventArgs e)
         {
+            //DrawProcess();//调试用
+
             Thread t1 = new Thread(new ThreadStart(DrawProcess));
             btn_startdraw.Enabled = false;
             t1.IsBackground = true;
@@ -299,6 +305,7 @@ namespace CardEditor
             int BoxId = 0;
             string Mode = string.Empty;
             string PicSrc = string.Empty;
+            
             //List<string> drawlist = null;
             int rowcellcount = 0;
             string text = string.Empty;
@@ -311,8 +318,10 @@ namespace CardEditor
 
             string e = Properties.Settings.Default.srcpicdir;
 
+            string infile = Properties.Settings.Default.inputtxtdir;
 
-            if (!File.Exists(Properties.Settings.Default.inputtxtdir))      //判断是否存在参数文件
+            //string htmltest = "<span style='";
+            if (!File.Exists(infile))      //判断是否存在参数文件
             {
                 MessageBox.Show("没有文件输入!");
                 btn_startdraw.Enabled = true;
@@ -322,12 +331,13 @@ namespace CardEditor
 
             try
             {
-                IWorkbook workbook = WorkbookFactory.Create(Properties.Settings.Default.inputtxtdir);
+                IWorkbook workbook = WorkbookFactory.Create(infile);
                 ISheet sheet = workbook.GetSheetAt(0);//获取第一个工作薄
                 //sheet.row
-
-                for (int i = 0; i < sheet.LastRowNum; i++)
-                {                    
+                pb_progress.Maximum = (sheet.LastRowNum+1)*2;
+                for (int i = 0; i < sheet.LastRowNum+1; i++)
+                {
+                    pb_progress.Value = 2*i + 1;
                     Bitmap TempImg = new Bitmap(SourceImage);
                     IRow e_row = (IRow)sheet.GetRow(i);
                     rowcellcount = e_row.Cells.Count;
@@ -353,6 +363,7 @@ namespace CardEditor
                         FontSize = float.Parse(row.Cells["fontsize"].Value.ToString());
                         DrawColor = row.Cells["color"].Style.BackColor;
                         flag = (int)CardBox.ParseFlag(row.Cells["flag"].Value.ToString());
+                        //htmltest += "font-family:"+ FontName + ";font-size:" + FontSize +";color:" + ColorTranslator.ToHtml(DrawColor)+";";
                         //flag = int.Parse(row.Cells["flag"].Value.ToString());
 
                         /*if (drawlist[BoxId - 1].StartsWith("<html>") && drawlist[BoxId - 1].EndsWith("</html>"))        //判断参数是否具有html特征
@@ -389,19 +400,25 @@ namespace CardEditor
                             PicSrc = Properties.Settings.Default.srcpicdir + e_row.Cells[BoxId - 1].StringCellValue;
                             image = Image.FromFile(PicSrc);
                         }
-
+                        //text = string.Format("<html><p style='text-align:{0};'><span style='font-family:{1};font-size:{2}px;color:{3};'>{4}</span></p></html>", "center", FontName, FontSize, ColorTranslator.ToHtml(DrawColor), text);
+                        //DrawColor = Color.FromArgb(100, DrawColor);//alpha test
                         DrawPic(text, myRectangle, FontName, FontSize, TempImg, DrawColor, false, flag, image);
+                        pb_progress.Value = 2*i + 2;
 
                         //}
 
 
                     }
-                    TempImg.Save(Properties.Settings.Default.savefolder + i + ".png");
-                    
+                    if (!(IsNameWithNum||e_row.Cells[0].ToString().StartsWith("<html")))
+                        TempImg.Save(Properties.Settings.Default.savefolder + e_row.Cells[0] + ".png");
+                    else
+                        TempImg.Save(Properties.Settings.Default.savefolder + i + ".png");
 
                 }
                 //foreach (string str in File.ReadAllLines(Properties.Settings.Default.inputtxtdir, Encoding.UTF8))       //遍历参数文件行
-            btn_startdraw.Enabled = true;
+                btn_startdraw.Enabled = true;
+                pb_progress.Value = 0;
+                
             }
 
 
@@ -851,27 +868,6 @@ namespace CardEditor
 
         private void btn_movedown_Click(object sender, EventArgs e)
         {
-            if (dgv_boxesdata.CurrentRow == null || dgv_boxesdata.CurrentRow.Index == dgv_boxesdata.RowCount - 1) return;
-            int index = dgv_boxesdata.CurrentRow.Index;
-            //DataGridViewRow dgvs = dgv_boxesdata.CurrentRow;
-
-            ////dgv_boxesdata.Rows[dgv_boxesdata.CurrentRow.Index-1].Cells
-            //try
-            //{
-
-            //    DataGridViewRow dgvr = dgv_boxesdata.Rows[index + 1];//获取选中行的下一行
-            //    dgv_boxesdata.Rows.RemoveAt(index + 1);//删除原选中行的下一行
-            //    dgv_boxesdata.Rows.Insert((index), dgvr);//将选中行的上一行插入到选中行的后面
-
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.ToString());
-            //}
-
-            boxes.Reverse(index, 2);
-            RefreshTable();
-            RefreshView();
 
         }
 
@@ -893,6 +889,16 @@ namespace CardEditor
             //TheArtOfDev.HtmlRenderer.WinForms.HtmlRender.RenderToImage(TempImg,html , new PointF((float)dud.Value, (float)debugud.Value));
             //pBmainview.Image = TempImg;
             //TempImg.Save("image.png", ImageFormat.Png);
+        }
+
+        private void cb_namefilewithnum_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cb_namefilewithnum_CheckedChanged(object sender, EventArgs e)
+        {
+                IsNameWithNum = cb_namefilewithnum.Checked;
         }
 
         private void btn_choosepicfolder_Click(object sender, EventArgs e)

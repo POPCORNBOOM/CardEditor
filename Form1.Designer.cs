@@ -63,6 +63,7 @@ namespace CardEditor
             this.l_size = new System.Windows.Forms.Label();
             this.pBmainview = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.cb_namefilewithnum = new System.Windows.Forms.CheckBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -96,6 +97,7 @@ namespace CardEditor
             this.btn_choosepicfolder = new System.Windows.Forms.Button();
             this.btn_opensavefolder = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
+            this.pb_progress = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_boxesdata)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pBmainview)).BeginInit();
@@ -149,7 +151,7 @@ namespace CardEditor
             this.dgv_boxesdata.RowHeadersWidth = 62;
             this.dgv_boxesdata.RowTemplate.Height = 23;
             this.dgv_boxesdata.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_boxesdata.Size = new System.Drawing.Size(763, 270);
+            this.dgv_boxesdata.Size = new System.Drawing.Size(763, 267);
             this.dgv_boxesdata.TabIndex = 1;
             this.dgv_boxesdata.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_boxesdata_CellClick);
             this.dgv_boxesdata.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_boxesdata_CellEndEdit);
@@ -324,7 +326,7 @@ namespace CardEditor
             // 
             this.btn_startdraw.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_startdraw.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_startdraw.Location = new System.Drawing.Point(1017, 524);
+            this.btn_startdraw.Location = new System.Drawing.Point(1017, 518);
             this.btn_startdraw.Name = "btn_startdraw";
             this.btn_startdraw.Size = new System.Drawing.Size(77, 77);
             this.btn_startdraw.TabIndex = 7;
@@ -347,17 +349,17 @@ namespace CardEditor
             // 
             this.tb_outdir.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tb_outdir.Location = new System.Drawing.Point(12, 524);
+            this.tb_outdir.Location = new System.Drawing.Point(11, 518);
             this.tb_outdir.Name = "tb_outdir";
             this.tb_outdir.ReadOnly = true;
-            this.tb_outdir.Size = new System.Drawing.Size(836, 21);
+            this.tb_outdir.Size = new System.Drawing.Size(837, 21);
             this.tb_outdir.TabIndex = 3;
             // 
             // btn_choosefolder
             // 
             this.btn_choosefolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_choosefolder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_choosefolder.Location = new System.Drawing.Point(854, 524);
+            this.btn_choosefolder.Location = new System.Drawing.Point(854, 518);
             this.btn_choosefolder.Name = "btn_choosefolder";
             this.btn_choosefolder.Size = new System.Drawing.Size(100, 23);
             this.btn_choosefolder.TabIndex = 7;
@@ -369,17 +371,17 @@ namespace CardEditor
             // 
             this.tb_textdir.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tb_textdir.Location = new System.Drawing.Point(12, 552);
+            this.tb_textdir.Location = new System.Drawing.Point(11, 546);
             this.tb_textdir.Name = "tb_textdir";
             this.tb_textdir.ReadOnly = true;
-            this.tb_textdir.Size = new System.Drawing.Size(836, 21);
+            this.tb_textdir.Size = new System.Drawing.Size(837, 21);
             this.tb_textdir.TabIndex = 3;
             // 
             // btn_choosefile
             // 
             this.btn_choosefile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_choosefile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_choosefile.Location = new System.Drawing.Point(854, 550);
+            this.btn_choosefile.Location = new System.Drawing.Point(854, 544);
             this.btn_choosefile.Name = "btn_choosefile";
             this.btn_choosefile.Size = new System.Drawing.Size(157, 23);
             this.btn_choosefile.TabIndex = 7;
@@ -402,14 +404,14 @@ namespace CardEditor
             this.panel1.Controls.Add(this.pBmainview);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(307, 503);
+            this.panel1.Size = new System.Drawing.Size(307, 500);
             this.panel1.TabIndex = 8;
             // 
             // checkBox1
             // 
             this.checkBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(222, 486);
+            this.checkBox1.Location = new System.Drawing.Point(222, 483);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(84, 16);
             this.checkBox1.TabIndex = 4;
@@ -420,7 +422,7 @@ namespace CardEditor
             // l_xyplus
             // 
             this.l_xyplus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.l_xyplus.Location = new System.Drawing.Point(-1, 434);
+            this.l_xyplus.Location = new System.Drawing.Point(-1, 431);
             this.l_xyplus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.l_xyplus.Name = "l_xyplus";
             this.l_xyplus.Size = new System.Drawing.Size(305, 12);
@@ -445,7 +447,7 @@ namespace CardEditor
             | System.Windows.Forms.AnchorStyles.Right)));
             this.l_pos.AutoSize = true;
             this.l_pos.Font = new System.Drawing.Font("宋体", 9F);
-            this.l_pos.Location = new System.Drawing.Point(4, 487);
+            this.l_pos.Location = new System.Drawing.Point(4, 484);
             this.l_pos.Name = "l_pos";
             this.l_pos.Size = new System.Drawing.Size(89, 12);
             this.l_pos.TabIndex = 3;
@@ -457,7 +459,7 @@ namespace CardEditor
             | System.Windows.Forms.AnchorStyles.Right)));
             this.l_size.AutoSize = true;
             this.l_size.Font = new System.Drawing.Font("宋体", 9F);
-            this.l_size.Location = new System.Drawing.Point(4, 460);
+            this.l_size.Location = new System.Drawing.Point(4, 457);
             this.l_size.Name = "l_size";
             this.l_size.Size = new System.Drawing.Size(11, 12);
             this.l_size.TabIndex = 3;
@@ -472,7 +474,7 @@ namespace CardEditor
             this.pBmainview.Image = global::CardEditor.Properties.Resources._1;
             this.pBmainview.Location = new System.Drawing.Point(0, 47);
             this.pBmainview.Name = "pBmainview";
-            this.pBmainview.Size = new System.Drawing.Size(307, 384);
+            this.pBmainview.Size = new System.Drawing.Size(307, 381);
             this.pBmainview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pBmainview.TabIndex = 0;
             this.pBmainview.TabStop = false;
@@ -486,6 +488,7 @@ namespace CardEditor
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Controls.Add(this.cb_namefilewithnum);
             this.panel2.Controls.Add(this.label13);
             this.panel2.Controls.Add(this.label12);
             this.panel2.Controls.Add(this.label9);
@@ -494,30 +497,43 @@ namespace CardEditor
             this.panel2.Controls.Add(this.dgv_boxesdata);
             this.panel2.Location = new System.Drawing.Point(325, 12);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(769, 503);
+            this.panel2.Size = new System.Drawing.Size(769, 500);
             this.panel2.TabIndex = 9;
+            // 
+            // cb_namefilewithnum
+            // 
+            this.cb_namefilewithnum.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.cb_namefilewithnum.AutoSize = true;
+            this.cb_namefilewithnum.Location = new System.Drawing.Point(644, 483);
+            this.cb_namefilewithnum.Name = "cb_namefilewithnum";
+            this.cb_namefilewithnum.Size = new System.Drawing.Size(108, 16);
+            this.cb_namefilewithnum.TabIndex = 13;
+            this.cb_namefilewithnum.Text = "以顺序命名文件";
+            this.cb_namefilewithnum.UseVisualStyleBackColor = true;
+            this.cb_namefilewithnum.CheckedChanged += new System.EventHandler(this.cb_namefilewithnum_CheckedChanged);
+            this.cb_namefilewithnum.Click += new System.EventHandler(this.cb_namefilewithnum_Click);
             // 
             // label13
             // 
             this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(4, 487);
+            this.label13.Location = new System.Drawing.Point(4, 484);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(587, 12);
+            this.label13.Size = new System.Drawing.Size(629, 12);
             this.label13.TabIndex = 12;
-            this.label13.Text = "生成图片默认以第一个框内容作为文件名，因此不能使用英文输入法下的< > / \\ | : \" * ?作为第一个框内容";
+            this.label13.Text = "生成图片默认以第一个框内容作为文件名，因此不能使用英文输入法下的< > / \\ | : \" * ?作为第一个框内容！其他:\r\n";
             // 
             // label12
             // 
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(4, 475);
+            this.label12.Location = new System.Drawing.Point(4, 472);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(665, 12);
+            this.label12.Size = new System.Drawing.Size(533, 12);
             this.label12.TabIndex = 12;
-            this.label12.Text = "双击条目以删除，选中后再次点击以编辑；框的绘制顺序是先绘制上面的(垫底)后绘制下面的(覆盖)，后绘制会覆盖先绘制的";
+            this.label12.Text = "点击条目以编辑；框的绘制顺序是先绘制上面的(垫底)后绘制下面的(覆盖)，后绘制会覆盖先绘制的";
             // 
             // label9
             // 
@@ -812,11 +828,11 @@ namespace CardEditor
             // label10
             // 
             this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label10.Location = new System.Drawing.Point(1053, 623);
+            this.label10.Location = new System.Drawing.Point(1053, 651);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(41, 12);
             this.label10.TabIndex = 11;
-            this.label10.Text = "v2.4a";
+            this.label10.Text = "v2.4b";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.label10.Click += new System.EventHandler(this.debugfunction);
             // 
@@ -826,7 +842,7 @@ namespace CardEditor
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label8.Location = new System.Drawing.Point(9, 620);
+            this.label8.Location = new System.Drawing.Point(9, 648);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(509, 12);
             this.label8.TabIndex = 11;
@@ -838,7 +854,7 @@ namespace CardEditor
             // 
             this.btn_report.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_report.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.btn_report.Location = new System.Drawing.Point(987, 615);
+            this.btn_report.Location = new System.Drawing.Point(987, 643);
             this.btn_report.Name = "btn_report";
             this.btn_report.Size = new System.Drawing.Size(59, 23);
             this.btn_report.TabIndex = 12;
@@ -851,7 +867,7 @@ namespace CardEditor
             this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label15.AutoSize = true;
             this.label15.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label15.Location = new System.Drawing.Point(716, 620);
+            this.label15.Location = new System.Drawing.Point(716, 648);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(269, 12);
@@ -862,17 +878,17 @@ namespace CardEditor
             // 
             this.tb_srcpicfolder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tb_srcpicfolder.Location = new System.Drawing.Point(12, 580);
+            this.tb_srcpicfolder.Location = new System.Drawing.Point(11, 574);
             this.tb_srcpicfolder.Name = "tb_srcpicfolder";
             this.tb_srcpicfolder.ReadOnly = true;
-            this.tb_srcpicfolder.Size = new System.Drawing.Size(836, 21);
+            this.tb_srcpicfolder.Size = new System.Drawing.Size(837, 21);
             this.tb_srcpicfolder.TabIndex = 3;
             // 
             // btn_choosepicfolder
             // 
             this.btn_choosepicfolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_choosepicfolder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_choosepicfolder.Location = new System.Drawing.Point(854, 578);
+            this.btn_choosepicfolder.Location = new System.Drawing.Point(854, 572);
             this.btn_choosepicfolder.Name = "btn_choosepicfolder";
             this.btn_choosepicfolder.Size = new System.Drawing.Size(157, 23);
             this.btn_choosepicfolder.TabIndex = 7;
@@ -884,7 +900,7 @@ namespace CardEditor
             // 
             this.btn_opensavefolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_opensavefolder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_opensavefolder.Location = new System.Drawing.Point(956, 524);
+            this.btn_opensavefolder.Location = new System.Drawing.Point(956, 518);
             this.btn_opensavefolder.Name = "btn_opensavefolder";
             this.btn_opensavefolder.Size = new System.Drawing.Size(55, 23);
             this.btn_opensavefolder.TabIndex = 7;
@@ -898,7 +914,7 @@ namespace CardEditor
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label17.BackColor = System.Drawing.Color.Gold;
             this.label17.ForeColor = System.Drawing.Color.IndianRed;
-            this.label17.Location = new System.Drawing.Point(-2, 604);
+            this.label17.Location = new System.Drawing.Point(-2, 632);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(1108, 12);
             this.label17.TabIndex = 11;
@@ -906,11 +922,21 @@ namespace CardEditor
     "1+原高)";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // pb_progress
+            // 
+            this.pb_progress.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pb_progress.Location = new System.Drawing.Point(11, 601);
+            this.pb_progress.Name = "pb_progress";
+            this.pb_progress.Size = new System.Drawing.Size(1083, 23);
+            this.pb_progress.TabIndex = 13;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1106, 640);
+            this.ClientSize = new System.Drawing.Size(1106, 668);
+            this.Controls.Add(this.pb_progress);
             this.Controls.Add(this.btn_report);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label8);
@@ -1024,6 +1050,8 @@ namespace CardEditor
         private System.Windows.Forms.DataGridViewTextBoxColumn color;
         private System.Windows.Forms.DataGridViewTextBoxColumn flag;
         private System.Windows.Forms.DataGridViewComboBoxColumn pic;
+        private System.Windows.Forms.CheckBox cb_namefilewithnum;
+        private System.Windows.Forms.ProgressBar pb_progress;
     }
 }
 

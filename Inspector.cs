@@ -118,6 +118,8 @@ namespace CardEditor
                 //改变panel的背景色
                 colorshow.BackColor = colorChoosed;
             }
+
+            
         }
 
         /*
@@ -196,6 +198,11 @@ namespace CardEditor
         private void btn_CancelEdit_Click(object sender, EventArgs e)
         {
             UpdateData();
+        }
+
+        private void colorshow_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

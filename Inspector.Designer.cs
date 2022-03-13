@@ -58,8 +58,8 @@
             this.btn_del = new System.Windows.Forms.Button();
             this.l_selectedline = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btn_SaveEdit = new System.Windows.Forms.Button();
             this.btn_CancelEdit = new System.Windows.Forms.Button();
+            this.btn_SaveEdit = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -280,6 +280,7 @@
             this.colorshow.Size = new System.Drawing.Size(143, 20);
             this.colorshow.TabIndex = 7;
             this.colorshow.Click += new System.EventHandler(this.Colorshow_Click);
+            this.colorshow.Paint += new System.Windows.Forms.PaintEventHandler(this.colorshow_Paint);
             // 
             // label6
             // 
@@ -434,20 +435,6 @@
             this.panel1.Size = new System.Drawing.Size(252, 59);
             this.panel1.TabIndex = 19;
             // 
-            // btn_SaveEdit
-            // 
-            this.btn_SaveEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btn_SaveEdit.BackColor = System.Drawing.Color.PaleGreen;
-            this.btn_SaveEdit.FlatAppearance.BorderSize = 0;
-            this.btn_SaveEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_SaveEdit.Location = new System.Drawing.Point(0, 36);
-            this.btn_SaveEdit.Name = "btn_SaveEdit";
-            this.btn_SaveEdit.Size = new System.Drawing.Size(126, 23);
-            this.btn_SaveEdit.TabIndex = 19;
-            this.btn_SaveEdit.Text = "保存";
-            this.btn_SaveEdit.UseVisualStyleBackColor = false;
-            this.btn_SaveEdit.Click += new System.EventHandler(this.btn_SaveEdit_Click);
-            // 
             // btn_CancelEdit
             // 
             this.btn_CancelEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -461,6 +448,20 @@
             this.btn_CancelEdit.Text = "取消";
             this.btn_CancelEdit.UseVisualStyleBackColor = false;
             this.btn_CancelEdit.Click += new System.EventHandler(this.btn_CancelEdit_Click);
+            // 
+            // btn_SaveEdit
+            // 
+            this.btn_SaveEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btn_SaveEdit.BackColor = System.Drawing.Color.PaleGreen;
+            this.btn_SaveEdit.FlatAppearance.BorderSize = 0;
+            this.btn_SaveEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_SaveEdit.Location = new System.Drawing.Point(0, 36);
+            this.btn_SaveEdit.Name = "btn_SaveEdit";
+            this.btn_SaveEdit.Size = new System.Drawing.Size(126, 23);
+            this.btn_SaveEdit.TabIndex = 19;
+            this.btn_SaveEdit.Text = "保存";
+            this.btn_SaveEdit.UseVisualStyleBackColor = false;
+            this.btn_SaveEdit.Click += new System.EventHandler(this.btn_SaveEdit_Click);
             // 
             // panel2
             // 
@@ -481,8 +482,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.MaximumSize = new System.Drawing.Size(268, 534);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MinimumSize = new System.Drawing.Size(268, 534);
             this.Name = "Inspector";
             this.Text = "属性";
