@@ -96,7 +96,7 @@ namespace CardEditor
             this.tb_srcpicfolder = new System.Windows.Forms.TextBox();
             this.btn_choosepicfolder = new System.Windows.Forms.Button();
             this.btn_opensavefolder = new System.Windows.Forms.Button();
-            this.label17 = new System.Windows.Forms.Label();
+            this.l_Tips = new System.Windows.Forms.Label();
             this.pb_progress = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_boxesdata)).BeginInit();
             this.panel1.SuspendLayout();
@@ -449,9 +449,9 @@ namespace CardEditor
             this.l_pos.Font = new System.Drawing.Font("宋体", 9F);
             this.l_pos.Location = new System.Drawing.Point(4, 484);
             this.l_pos.Name = "l_pos";
-            this.l_pos.Size = new System.Drawing.Size(89, 12);
+            this.l_pos.Size = new System.Drawing.Size(83, 12);
             this.l_pos.TabIndex = 3;
-            this.l_pos.Text = "truepixel(0,0)";
+            this.l_pos.Text = "真实像素(0,0)";
             // 
             // l_size
             // 
@@ -531,9 +531,9 @@ namespace CardEditor
             this.label12.Location = new System.Drawing.Point(4, 472);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(533, 12);
+            this.label12.Size = new System.Drawing.Size(89, 12);
             this.label12.TabIndex = 12;
-            this.label12.Text = "点击条目以编辑；框的绘制顺序是先绘制上面的(垫底)后绘制下面的(覆盖)，后绘制会覆盖先绘制的";
+            this.label12.Text = "点击条目以编辑";
             // 
             // label9
             // 
@@ -819,6 +819,7 @@ namespace CardEditor
             "居右1",
             "竖左2",
             "竖右3",
+            "居中4",
             "整行4096"});
             this.cb_flag.Location = new System.Drawing.Point(43, 72);
             this.cb_flag.Name = "cb_flag";
@@ -832,7 +833,7 @@ namespace CardEditor
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(41, 12);
             this.label10.TabIndex = 11;
-            this.label10.Text = "v2.4b";
+            this.label10.Text = "v2.5";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.label10.Click += new System.EventHandler(this.debugfunction);
             // 
@@ -846,7 +847,7 @@ namespace CardEditor
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(509, 12);
             this.label8.TabIndex = 11;
-            this.label8.Text = "Copyright © 2021 PopcornBoom All rights reserved.(Click to drop in at project pag" +
+            this.label8.Text = "Copyright © 2022 PopcornBoom All rights reserved.(Click to drop in at project pag" +
     "es)";
             this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
@@ -908,19 +909,20 @@ namespace CardEditor
             this.btn_opensavefolder.UseVisualStyleBackColor = true;
             this.btn_opensavefolder.Click += new System.EventHandler(this.btn_opensavefolder_Click);
             // 
-            // label17
+            // l_Tips
             // 
-            this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.l_Tips.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label17.BackColor = System.Drawing.Color.Gold;
-            this.label17.ForeColor = System.Drawing.Color.IndianRed;
-            this.label17.Location = new System.Drawing.Point(-2, 632);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(1108, 12);
-            this.label17.TabIndex = 11;
-            this.label17.Text = "此新版本框位置的确定方式由(原点加宽长确定框)改成了(两点确定框),虽打开旧框集合文件不会报错,但(x2,y2)的值还是原来的(宽,长)请手动改为(x1+原宽,x" +
-    "1+原高)";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.l_Tips.BackColor = System.Drawing.Color.Gold;
+            this.l_Tips.ForeColor = System.Drawing.Color.IndianRed;
+            this.l_Tips.Location = new System.Drawing.Point(-2, 632);
+            this.l_Tips.Name = "l_Tips";
+            this.l_Tips.Size = new System.Drawing.Size(1108, 12);
+            this.l_Tips.TabIndex = 11;
+            this.l_Tips.Text = "可以居中了";
+            this.l_Tips.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.l_Tips.Click += new System.EventHandler(this.l_Tips_Click);
+            this.l_Tips.DoubleClick += new System.EventHandler(this.l_Tips_DoubleClick);
             // 
             // pb_progress
             // 
@@ -940,7 +942,7 @@ namespace CardEditor
             this.Controls.Add(this.btn_report);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.label17);
+            this.Controls.Add(this.l_Tips);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -1039,7 +1041,7 @@ namespace CardEditor
         private System.Windows.Forms.NumericUpDown nUD_rectx2;
         private System.Windows.Forms.NumericUpDown nUD_rectx1;
         private System.Windows.Forms.Button btn_opensavefolder;
-        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label l_Tips;
         private System.Windows.Forms.DataGridViewTextBoxColumn boxname;
         private System.Windows.Forms.DataGridViewTextBoxColumn rectx1;
         private System.Windows.Forms.DataGridViewTextBoxColumn recty1;

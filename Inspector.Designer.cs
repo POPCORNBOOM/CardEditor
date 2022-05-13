@@ -328,6 +328,7 @@
             "居右1",
             "竖左2",
             "竖右3",
+            "居中4",
             "整行4096"});
             this.cb_flag.Location = new System.Drawing.Point(43, 72);
             this.cb_flag.Name = "cb_flag";

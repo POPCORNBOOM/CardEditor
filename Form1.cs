@@ -22,6 +22,7 @@ namespace CardEditor
         public int selectedIndex;   //用于检视面板
         public bool isInspectorOn = false;
         private Inspector inspector = new Inspector();
+        public List<string> Tips = new List<string>();
 
         //Stopwatch Stopwatch= new Stopwatch();//花里胡哨的的选择框alpha周期缓动（bushi
         private bool Isdrawing;
@@ -43,6 +44,23 @@ namespace CardEditor
 
             SourceImage = Properties.Resources._1;
             l_size.Text = "预览比例(" + (pBmainview.Height * 1.0 / pBmainview.Width).ToString("N2") + ")可能与原图(" + (SourceImage.Height * 1.0 / SourceImage.Width).ToString("N2") + ")不一致\n但不影响输出情况(如何调整比例？拉伸窗口！)";
+            
+            Tips.Add("其实点击我可以切换......");
+            Tips.Add("终于可以居中了");
+            Tips.Add("Tips 这是个Tips");
+            Tips.Add("其实开发者有在着手开发新版本的EZCard，双击康康");
+            Tips.Add("如果你喜欢这款软件的话请分享给你的朋友哦");
+            Tips.Add("我们逆时巫师贞德太好玩辣！！！");
+            Tips.Add("框集合文件对于框位置值的保存是两点的坐标哦，也就是说如果底图原图的尺寸变了，框可能会对不上哦");
+            Tips.Add("像图层一样，框的绘制顺序是先绘制上面的(垫底)后绘制下面的(覆盖)，后绘制会覆盖先绘制的");
+            Tips.Add("出现恼人的错误或异常退出？帮助项目更好地开发，在右下角点击汇报Bug以提交反馈");
+            Tips.Add("当鼠标在预览界面内滑动时，预览界面下方会显示鼠标位置在预览中的实际像素位置");
+            Tips.Add("在预览界面拖动鼠标可以框选区域并自动填入两点数值");
+            Tips.Add("CardEditor允许你把点坐标设置到画布外的区域");
+            Tips.Add("CardEditor允许你使用html语言对参数使用富文本，格式:<html>你的html代码</html>");
+            Tips.Add("好像就这"+(Tips.Count+1)+"个Tips......");
+            Tips.Add("现在刷到我的概率是1/" + Tips.Count);
+            l_Tips.Text = GetRandomTips();
 
 
             if (Directory.Exists(Properties.Settings.Default.savefolder)) tb_outdir.Text = Properties.Settings.Default.savefolder;
@@ -214,7 +232,16 @@ namespace CardEditor
             {
                 if (fontname == string.Empty) fontname = "黑体";
                 Font font = new Font(fontname, fontsize);
-                StringFormat sf = new StringFormat((StringFormatFlags)sfflag);
+                StringFormat sf = new StringFormat();
+                if (sfflag==4)
+                {
+                    sf.LineAlignment = StringAlignment.Center;
+                    sf.Alignment = StringAlignment.Center;
+                }
+                else
+                {
+                    sf = new StringFormat((StringFormatFlags)sfflag);
+                }
                 Brush fontbrush = new SolidBrush(color);
                 Brush backbrush = new SolidBrush(Color.FromArgb(100, 255 - color.R, 255 - color.G, 255 - color.B));
                 if (drawback && IsShowBack)
@@ -496,7 +523,7 @@ namespace CardEditor
             double ht = pBmainview.Height;
             Last_X = (int)(SourceImage.Width * (e.X / wd));
             Last_Y = (int)(SourceImage.Height * (e.Y / ht));
-            l_pos.Text = "truepixel(" + Last_X + "," + Last_Y + ")";
+            l_pos.Text = "真实像素(" + Last_X + "," + Last_Y + ")";
 
             if (IsMouseDown)
             {
@@ -603,7 +630,7 @@ namespace CardEditor
 
         private void pBmainview_MouseLeave(object sender, EventArgs e)
         {
-            l_pos.Text = "truepixel(0,0)";
+            l_pos.Text = "真实像素(0,0)";
         }
 
 
@@ -916,6 +943,16 @@ namespace CardEditor
             }
         }
 
+        private void l_Tips_Click(object sender, EventArgs e)
+        {
+            l_Tips.Text = GetRandomTips();
+        }
+
+        private void l_Tips_DoubleClick(object sender, EventArgs e)
+        {
+            Process.Start("https://t.bilibili.com/659766436220108848");
+        }
+
         private void cb_picsrcfrom_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cb_picsrcfrom.Text == "仅文字无图")
@@ -978,6 +1015,11 @@ namespace CardEditor
             i.pictureSrc = CardBox.ParsePictureSrc(row["pic"].Value.ToString());
             return i;
         }
-
+        
+        public string GetRandomTips()
+        {
+            Random random = new Random();
+            return Tips[random.Next(Tips.Count)];
+        }
     }
 }

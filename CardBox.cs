@@ -60,6 +60,10 @@ namespace CardEditor
                     f = Flag.Right_Vertical;
                     break;
 
+                case "居中4":
+                    f = Flag.MiddleAlign;
+                    break;
+                    
                 default:
                     f = Flag.All_Line;
                     break;
@@ -82,6 +86,8 @@ namespace CardEditor
                     return "竖右3";
                 case Flag.All_Line:
                     return "整行";
+                case Flag.MiddleAlign:
+                    return "居中4";
                 default: return "整行";
             }
         }
@@ -130,7 +136,8 @@ namespace CardEditor
         Right_Horizontal = 1,       //居右
         Left_Vertical = 2,          //竖左
         Right_Vertical = 3,         //竖右
-        All_Line = 4096             //整行
+        All_Line = 4096,             //整行
+        MiddleAlign = 4
     }
 
     public enum PictureSrc

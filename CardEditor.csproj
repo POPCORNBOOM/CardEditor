@@ -23,7 +23,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -163,6 +163,7 @@
   <ItemGroup>
     <Content Include="256xico.ico" />
     <Content Include="bitbug_favicon %283%29.ico" />
+    <Content Include="Resources\EZCARD.png" />
     <None Include="Resources\defaultimg1.png" />
     <None Include="Resources\duplicate32x.png" />
     <None Include="Resources\defaultimg.png" />
