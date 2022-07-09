@@ -48,6 +48,7 @@ namespace CardEditor
             Tips.Add("其实点击我可以切换......");
             Tips.Add("终于可以居中了");
             Tips.Add("Tips 这是个Tips");
+            Tips.Add("安装了新字体后要重启软件才能读取");
             Tips.Add("其实开发者有在着手开发新版本的EZCard，双击康康");
             Tips.Add("如果你喜欢这款软件的话请分享给你的朋友哦");
             Tips.Add("我们逆时巫师贞德太好玩辣！！！");
