@@ -1,10 +1,15 @@
 # CardEditor
 > :cake: 一款专为桌游设计师开发的批处理数值填入卡牌生成器
 
+# 新消息
+> 新的开发计划：EZCard正在开发中 详情见：[Project EZCard](https://github.com/POPCORNBOOM/CardEditor/blob/main/Project%20EZCard.md)
+> 或者你可以加入官方讨论群，实时了解EZCard的最新开发动态：QQ:567915181
+
 #### 注
+
 - 源代码是最新的v2.4b编译
 > 最后版本v2.4.81.42已发布，会提供bug修复，但再开发新功能
-> 新的开发计划：EZCard正在筹划中 详情见：[Project EZCard](https://github.com/POPCORNBOOM/CardEditor/blob/main/Project%20EZCard.md)
+
 
 ## 介绍
 一款专为桌游设计师开发的批处理数值填入卡牌生成器
