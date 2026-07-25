@@ -1,9 +1,9 @@
+> 该项目开发完备，受制于框架，已结束支持并归档
+
+[新一代开源跨平台版本化桌游项目工作台 OpenCard 正在早期实验性版本测试中，点击访问项目仓库](https://github.com/POPCORNBOOM/OpenCard)
+
 # CardEditor
 > :cake: 一款专为桌游设计师开发的批处理数值填入卡牌生成器
-
-# 新消息
-> 新的开发计划：EZCard正在开发中 详情见：[Project EZCard](https://github.com/POPCORNBOOM/CardEditor/blob/main/Project%20EZCard.md)
-> 或者你可以加入官方讨论群，实时了解EZCard的最新开发动态：QQ:567915181
 
 #### 注
 
